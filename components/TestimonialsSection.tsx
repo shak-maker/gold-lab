@@ -1,0 +1,140 @@
+"use client";
+
+import { motion } from "motion/react";
+import { Star, Quote } from "lucide-react";
+import { ImageWithFallback } from "./figma/ImageWithFallback";
+
+const testimonials = [
+  {
+    name: "Sarah Mitchell",
+    role: "Jewelry Store Owner",
+    image: "https://images.unsplash.com/photo-1649589244330-09ca58e4fa64?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b21hbiUyMHByb2Zlc3Npb25hbCUyMHBvcnRyYWl0fGVufDF8fHx8MTc2MzMxODg4N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+    content: "GoldTest Lab has been our trusted partner for over 5 years. Their XRF testing is incredibly accurate and the certified reports give our customers complete confidence. Highly professional service!",
+    rating: 5,
+  },
+  {
+    name: "Michael Chen",
+    role: "Gold Dealer",
+    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzc21hbiUyMHBvcnRyYWl0fGVufDF8fHx8MTc2MzMxOTEyOXww&ixlib=rb-4.1.0&q=80&w=1080",
+    content: "The turnaround time is exceptional. I get detailed reports within 24 hours, which is crucial for my business. The team is knowledgeable and the pricing is fair. Best gold testing lab in the region.",
+    rating: 5,
+  },
+  {
+    name: "Dr. Priya Sharma",
+    role: "Research Scientist",
+    image: "https://images.unsplash.com/photo-1576670158706-8d5b044b61da?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBzY2llbnRpc3QlMjB3b21hbnxlbnwxfHx8fDE3NjMzNDYwNzd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+    content: "As a metallurgist, I appreciate their commitment to accuracy and modern testing methods. Their state-of-the-art equipment and ISO certification make them stand out. Excellent technical expertise.",
+    rating: 5,
+  },
+];
+
+export function TestimonialsSection() {
+  return (
+    <section className="py-24 bg-zinc-50">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <span className="text-[#D4AF37] mb-4 block tracking-wide">TESTIMONIALS</span>
+          <h2 className="text-zinc-900 mb-4 text-4xl font-bold">What Our Clients Say</h2>
+          <p className="text-zinc-600 max-w-2xl mx-auto">
+            Trusted by jewelry stores, dealers, and individuals across the region
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          {testimonials.map((testimonial, index) => (
+            <motion.div
+              key={testimonial.name}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="group"
+            >
+              <motion.div
+                className="bg-white rounded-3xl p-8 shadow-md hover:shadow-2xl transition-all duration-300 h-full flex flex-col border border-zinc-100"
+                whileHover={{ y: -8 }}
+              >
+                {/* Quote Icon */}
+                <div className="w-12 h-12 bg-gradient-to-br from-[#D4AF37]/10 to-[#FFD700]/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Quote className="w-6 h-6 text-[#D4AF37]" />
+                </div>
+
+                {/* Rating */}
+                <div className="flex gap-1 mb-4">
+                  {Array.from({ length: testimonial.rating }).map((_, i) => (
+                    <Star
+                      key={i}
+                      className="w-4 h-4 fill-[#D4AF37] text-[#D4AF37]"
+                    />
+                  ))}
+                </div>
+
+                {/* Content */}
+                <p className="text-zinc-700 mb-6 flex-grow leading-relaxed">
+                  "{testimonial.content}"
+                </p>
+
+                {/* Author */}
+                <div className="flex items-center gap-4 pt-6 border-t border-zinc-100">
+                  <div className="relative">
+                    <div className="w-14 h-14 rounded-full overflow-hidden ring-2 ring-[#D4AF37]/30 group-hover:ring-[#D4AF37] transition-all duration-300">
+                      <ImageWithFallback
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-[#D4AF37] rounded-full flex items-center justify-center">
+                      <svg className="w-3 h-3 text-zinc-900" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="text-zinc-900 mb-1 font-semibold">{testimonial.name}</div>
+                    <div className="text-zinc-500 text-sm">{testimonial.role}</div>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Trust Badges */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+          className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8"
+        >
+          {[
+            { label: "ISO Certified", value: "9001:2015" },
+            { label: "Tests Completed", value: "15,000+" },
+            { label: "Client Satisfaction", value: "99.8%" },
+            { label: "Response Time", value: "<24hrs" },
+          ].map((stat, index) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 + index * 0.1 }}
+              className="text-center p-6 bg-white rounded-2xl border border-zinc-100"
+            >
+              <div className="text-[#D4AF37] mb-2 font-bold text-xl">{stat.value}</div>
+              <div className="text-zinc-600 text-sm">{stat.label}</div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
