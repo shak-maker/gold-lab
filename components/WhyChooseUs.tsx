@@ -2,7 +2,6 @@
 
 import { motion } from "motion/react";
 import { Award, Clock, Users, Heart } from "lucide-react";
-import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 const features = [
   {
@@ -41,7 +40,7 @@ export function WhyChooseUs() {
             className="relative"
           >
             <div className="relative rounded-3xl overflow-hidden">
-              <ImageWithFallback
+              <img
                 src="https://images.unsplash.com/photo-1759866042499-d0b3e9d87ceb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBsYWJvcmF0b3J5JTIwdGVjaG5vbG9neXxlbnwxfHx8fDE3NjMzNDYwNzd8MA&ixlib=rb-4.1.0&q=80&w=1080"
                 alt="Modern laboratory technology"
                 className="w-full h-[600px] object-cover"
@@ -59,15 +58,15 @@ export function WhyChooseUs() {
               >
                 <div className="grid grid-cols-3 gap-4">
                   <div className="text-center">
-                    <div className="text-[#D4AF37] mb-1 font-bold text-xl">15K+</div>
+                    <div className="text-[#fa9906] mb-1 font-bold text-xl">15K+</div>
                     <div className="text-zinc-600 text-sm">Шинжилгээ</div>
                   </div>
                   <div className="text-center border-x border-zinc-200">
-                    <div className="text-[#D4AF37] mb-1 font-bold text-xl">10+</div>
+                    <div className="text-[#fa9906] mb-1 font-bold text-xl">10+</div>
                     <div className="text-zinc-600 text-sm">Жил</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-[#D4AF37] mb-1 font-bold text-xl">100%</div>
+                    <div className="text-[#fa9906] mb-1 font-bold text-xl">100%</div>
                     <div className="text-zinc-600 text-sm">Баталгаажсан</div>
                   </div>
                 </div>
@@ -75,8 +74,8 @@ export function WhyChooseUs() {
             </div>
 
             {/* Decorative Elements */}
-            <div className="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-br from-[#D4AF37]/20 to-[#FFD700]/20 rounded-3xl blur-2xl -z-10" />
-            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-br from-[#FFD700]/20 to-[#D4AF37]/20 rounded-3xl blur-2xl -z-10" />
+            <div className="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-br from-[#fa9906]/20 to-[#FFD700]/20 rounded-3xl blur-2xl -z-10" />
+            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-br from-[#FFD700]/20 to-[#fa9906]/20 rounded-3xl blur-2xl -z-10" />
           </motion.div>
 
           {/* Right Side - Content */}
@@ -86,7 +85,7 @@ export function WhyChooseUs() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <span className="text-[#D4AF37] mb-4 block tracking-wide">ЯАГААД БИДНИЙГ СОНГОХ ВЭ</span>
+            <span className="text-[#fa9906] mb-4 block tracking-wide">ЯАГААД БИДНИЙГ СОНГОХ ВЭ</span>
             <h2 className="text-zinc-900 mb-6 text-4xl font-bold">
               Алтны чанарын шинжилгээний мэргэжилтнүүдэд итгэ
             </h2>
@@ -108,8 +107,8 @@ export function WhyChooseUs() {
                     transition={{ delay: index * 0.1 }}
                     className="flex gap-4 group"
                   >
-                    <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#D4AF37]/10 to-[#FFD700]/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <Icon className="w-6 h-6 text-[#D4AF37]" />
+                    <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#fa9906]/10 to-[#FFD700]/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <Icon className="w-6 h-6 text-[#fa9906]" />
                     </div>
                     <div>
                       <h3 className="text-zinc-900 mb-1 font-semibold">{feature.title}</h3>
@@ -128,10 +127,10 @@ export function WhyChooseUs() {
               className="mt-10 pt-8 border-t border-zinc-200"
             >
               <div className="flex items-center gap-4">
-                <button className="px-8 py-3 bg-gradient-to-r from-[#D4AF37] to-[#FFD700] hover:from-[#FFD700] hover:to-[#D4AF37] text-zinc-900 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl font-semibold">
+                <button className="px-8 py-3 bg-gradient-to-r from-[#fa9906] to-[#FFD700] hover:from-[#FFD700] hover:to-[#fa9906] text-zinc-900 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl font-semibold">
                   Шинжилгээ захиалах
                 </button>
-                <button className="px-8 py-3 text-zinc-700 hover:text-[#D4AF37] transition-colors font-semibold">
+                <button className="px-8 py-3 text-zinc-700 hover:text-[#fa9906] transition-colors font-semibold">
                   Дэлгэрэнгүй мэдээлэл →
                 </button>
               </div>

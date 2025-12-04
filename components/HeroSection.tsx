@@ -5,13 +5,15 @@ import { Button } from "./ui/button";
 import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 
-// Dynamically import the 3D component to avoid SSR issues
 const GoldIngotCanvas = dynamic(() => import("./GoldIngotCanvas"), {
   ssr: false,
+  loading: () => null,
 });
 
 export function HeroSection() {
-  const [particles, setParticles] = useState<Array<{ id: number; x: number; y: number; delay: number }>>([]);
+  const [particles, setParticles] = useState<
+    Array<{ id: number; x: number; y: number; delay: number }>
+  >([]);
 
   useEffect(() => {
     const newParticles = Array.from({ length: 20 }, (_, i) => ({
@@ -21,51 +23,17 @@ export function HeroSection() {
       delay: Math.random() * 2,
     }));
     setParticles(newParticles);
+    import("@react-three/drei").then((drei) => {
+      drei.useGLTF.preload("/models/scene.gltf");
+    });
   }, []);
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900">
-      {/* Abstract Gold Molecular Structure Background */}
-      <div className="absolute inset-0 opacity-10">
-        <svg className="w-full h-full" viewBox="0 0 1200 800">
-          <defs>
-            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#D4AF37" stopOpacity="0.8" />
-              <stop offset="100%" stopColor="#FFD700" stopOpacity="0.3" />
-            </linearGradient>
-          </defs>
-          
-          {/* Molecular nodes */}
-          <circle cx="200" cy="150" r="8" fill="url(#goldGradient)" />
-          <circle cx="350" cy="200" r="8" fill="url(#goldGradient)" />
-          <circle cx="500" cy="180" r="8" fill="url(#goldGradient)" />
-          <circle cx="650" cy="250" r="8" fill="url(#goldGradient)" />
-          <circle cx="800" cy="200" r="8" fill="url(#goldGradient)" />
-          <circle cx="950" cy="280" r="8" fill="url(#goldGradient)" />
-          <circle cx="300" cy="350" r="8" fill="url(#goldGradient)" />
-          <circle cx="450" cy="400" r="8" fill="url(#goldGradient)" />
-          <circle cx="600" cy="380" r="8" fill="url(#goldGradient)" />
-          <circle cx="750" cy="450" r="8" fill="url(#goldGradient)" />
-          
-          {/* Connection lines */}
-          <line x1="200" y1="150" x2="350" y2="200" stroke="url(#goldGradient)" strokeWidth="2" />
-          <line x1="350" y1="200" x2="500" y2="180" stroke="url(#goldGradient)" strokeWidth="2" />
-          <line x1="500" y1="180" x2="650" y2="250" stroke="url(#goldGradient)" strokeWidth="2" />
-          <line x1="650" y1="250" x2="800" y2="200" stroke="url(#goldGradient)" strokeWidth="2" />
-          <line x1="800" y1="200" x2="950" y2="280" stroke="url(#goldGradient)" strokeWidth="2" />
-          <line x1="300" y1="350" x2="450" y2="400" stroke="url(#goldGradient)" strokeWidth="2" />
-          <line x1="450" y1="400" x2="600" y2="380" stroke="url(#goldGradient)" strokeWidth="2" />
-          <line x1="600" y1="380" x2="750" y2="450" stroke="url(#goldGradient)" strokeWidth="2" />
-          <line x1="350" y1="200" x2="300" y2="350" stroke="url(#goldGradient)" strokeWidth="2" />
-          <line x1="500" y1="180" x2="450" y2="400" stroke="url(#goldGradient)" strokeWidth="2" />
-        </svg>
-      </div>
-
-      {/* Floating Particles */}
+    <div className="relative min-h-[90vh] overflow-hidden bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900">
       {particles.map((particle) => (
         <motion.div
           key={particle.id}
-          className="absolute w-1 h-1 bg-[#D4AF37] rounded-full"
+          className="absolute w-1 h-1 bg-[#fa9906] rounded-full"
           style={{
             left: `${particle.x}%`,
             top: `${particle.y}%`,
@@ -82,42 +50,7 @@ export function HeroSection() {
         />
       ))}
 
-      {/* Navigation */}
-      <nav className="relative z-20 px-6 py-6 md:px-12">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            {/* YMCT Logo Symbol */}
-            <div className="w-12 h-12 flex items-center justify-center">
-              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                {/* Outer Circle */}
-                <circle cx="24" cy="24" r="22" stroke="#FF6600" strokeWidth="2" fill="none" />
-                {/* Outer Diamond (rotated square outline) */}
-                <path d="M24 6 L38 24 L24 42 L10 24 Z" stroke="#FF6600" strokeWidth="2" fill="none" />
-                {/* Inner Diamond (rotated square filled) */}
-                <path d="M24 12 L32 24 L24 36 L16 24 Z" fill="#FF6600" />
-              </svg>
-            </div>
-            {/* YMCT Text */}
-            <span 
-              className="text-[#FF6600] tracking-wide font-bold text-xl"
-              style={{
-                textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5), 1px 1px 2px rgba(255, 102, 0, 0.3)"
-              }}
-            >
-              YMCT
-            </span>
-          </div>
-          <div className="hidden md:flex items-center gap-8 text-zinc-300">
-            <a href="#services" className="hover:text-[#D4AF37] transition-colors">Yйлчилгээ</a>
-            <a href="#process" className="hover:text-[#D4AF37] transition-colors">Үйл явц</a>
-            <a href="#about-us" className="hover:text-[#D4AF37] transition-colors">Бидний тухай</a>
-            <a href="#contact" className="hover:text-[#D4AF37] transition-colors">Холбоо барих</a>
-          </div>
-        </div>
-      </nav>
-
-      {/* Hero Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 pt-20 pb-32">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 pt-28 pb-24">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -130,48 +63,53 @@ export function HeroSection() {
               transition={{ delay: 0.3 }}
               className="inline-block mb-6"
             >
-              <span className="px-4 py-2 bg-[#D4AF37]/10 border border-[#D4AF37]/30 rounded-full text-[#D4AF37] backdrop-blur-sm">
-              Баталгаажсан Алт Шалгах Лаборатори
+              <span className="px-4 py-2 bg-[#fa9906]/10 border border-[#fa9906]/30 rounded-full text-[#fa9906] backdrop-blur-sm">
+              MNS ISO/IEC 17025:2018 
               </span>
             </motion.div>
 
             <h1 className="text-white mb-6 text-5xl md:text-6xl font-bold">
-            Найдвартай, өндөр нарийвчлалтай алтны шинжилгээ
+            Чанар - Сэтгэл Ханамж
             </h1>
-            
-            <p className="text-zinc-400 mb-8 max-w-xl text-lg">
-            Манай лаборатори нь үнэт металлыг хайлж гулдмайлах, 
-            үнэт металл болон тэдгээрээр хийсэн эдлэлд сорьц тогтоох шинжилгээ хийдэг.
+
+            <p className="text-zinc-400 mb-8 max-w-xl text-md">
+            Олон улсын MNS ISO/IEC 17025:2018 стандартаар итгэмжлэгдсэн үнэт металлын сорьц тогтоох, хайлах лаборатори. Бид найдвартай, хурдан шуурхай үйлчилгээг санал болгож байна.
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <Button 
-                size="lg" 
-                className="bg-gradient-to-r from-[#D4AF37] to-[#FFD700] hover:from-[#FFD700] hover:to-[#D4AF37] text-zinc-900 border-0 rounded-xl px-8 shadow-lg shadow-[#D4AF37]/20"
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-[#fa9906] to-[#FFD700] hover:from-[#FFD700] hover:to-[#fa9906] text-zinc-900 border-0 rounded-xl px-8 shadow-lg shadow-[#fa9906]/20"
               >
-                Алтаа шалгуулах
+                Үнэ Тариф
               </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-[#D4AF37]/50 text-[#D4AF37] hover:bg-[#D4AF37]/10 rounded-xl px-8"
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-[#fa9906]/50 text-[#fa9906] hover:bg-[#fa9906]/10 rounded-xl px-8"
               >
-                Үйлчилгээ үзэх
+                Байршил
               </Button>
             </div>
 
             {/* Stats */}
             <div className="grid grid-cols-3 gap-8 mt-16 pt-8 border-t border-zinc-700">
               <div>
-                <div className="text-[#D4AF37] mb-1 text-2xl font-bold">99.9%</div>
+                <div className="text-[#fa9906] mb-1 text-2xl font-bold">
+                  99.9%
+                </div>
                 <div className="text-zinc-500">Нарийвчлал</div>
               </div>
               <div>
-                <div className="text-[#D4AF37] mb-1 text-2xl font-bold">24ц</div>
+                <div className="text-[#fa9906] mb-1 text-2xl font-bold">
+                  24ц
+                </div>
                 <div className="text-zinc-500">Хурдан үр дүн</div>
               </div>
               <div>
-                <div className="text-[#D4AF37] mb-1 text-2xl font-bold">15K+</div>
+                <div className="text-[#fa9906] mb-1 text-2xl font-bold">
+                  15K+
+                </div>
                 <div className="text-zinc-500">Хийсэн шинжилгээ</div>
               </div>
             </div>
@@ -189,9 +127,9 @@ export function HeroSection() {
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/20 to-transparent rounded-[3rem] backdrop-blur-sm border border-[#D4AF37]/20"
+                className="absolute inset-0 bg-gradient-to-br from-[#fa9906]/20 to-transparent rounded-[3rem] backdrop-blur-sm border border-[#fa9906]/20"
               />
-              
+
               <motion.div
                 animate={{ rotate: -360 }}
                 transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
@@ -201,17 +139,22 @@ export function HeroSection() {
               <div className="absolute inset-0 flex items-center justify-center">
                 {/* Premium golden glow */}
                 <motion.div
-                  animate={{ 
+                  animate={{
                     scale: [1, 1.4, 1],
-                    opacity: [0.3, 0.6, 0.3]
+                    opacity: [0.3, 0.6, 0.3],
                   }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
                   className="absolute inset-0 rounded-[4rem] blur-[80px]"
                   style={{
-                    background: "radial-gradient(ellipse at center, #F7C331 0%, #F7882F 50%, transparent 70%)"
+                    background:
+                      "radial-gradient(ellipse at center, #F7C331 0%, #F7882F 50%, transparent 70%)",
                   }}
                 />
-                
+
                 {/* Three.js 3D Gold Ingot */}
                 <div className="relative w-full h-full aspect-square z-10">
                   <GoldIngotCanvas />
@@ -224,7 +167,11 @@ export function HeroSection() {
 
       {/* Bottom Wave */}
       <div className="absolute bottom-0 left-0 right-0">
-        <svg className="w-full h-24" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <svg
+          className="w-full h-24"
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+        >
           <path
             d="M0,60 C300,100 900,20 1200,60 L1200,120 L0,120 Z"
             fill="white"
@@ -234,4 +181,3 @@ export function HeroSection() {
     </div>
   );
 }
-

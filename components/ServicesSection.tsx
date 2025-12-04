@@ -41,7 +41,7 @@ export function ServicesSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-[#D4AF37] mb-4 block tracking-wide">Бидний Yйлчилгээ</span>
+          <span className="text-[#fa9906] mb-4 block tracking-wide">Бидний Yйлчилгээ</span>
           <h2 className="text-zinc-900 mb-4 text-4xl font-bold">Бүтээгдэхүүнүүдийн дэлгэрэнгүй шинжилгээ</h2>
           <p className="text-zinc-600 max-w-2xl mx-auto">
             Үнэт металлын сорьц тогтоох лабораторийн дэлгэрэнгүй шинжилгээ
@@ -65,7 +65,7 @@ export function ServicesSection() {
                   whileHover={{ y: -8 }}
                 >
                   {/* Gradient Background on Hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#fa9906]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                   {/* Icon Container */}
                   <motion.div
@@ -73,8 +73,8 @@ export function ServicesSection() {
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/20 to-[#FFD700]/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <Icon className="w-10 h-10 text-[#D4AF37] relative z-10" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#fa9906]/20 to-[#FFD700]/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <Icon className="w-10 h-10 text-[#fa9906] relative z-10" />
                   </motion.div>
 
                   <h3 className="text-zinc-900 mb-3 text-xl font-semibold">{service.title}</h3>
@@ -84,14 +84,14 @@ export function ServicesSection() {
                   <div className="space-y-2">
                     {service.features.map((feature) => (
                       <div key={feature} className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-[#fa9906]" />
                         <span className="text-zinc-700 text-sm">{feature}</span>
                       </div>
                     ))}
                   </div>
 
                   {/* Bottom Accent */}
-                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#fa9906] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </motion.div>
               </motion.div>
             );

@@ -33,7 +33,7 @@ export function PurityCalculator() {
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
-          backgroundImage: 'radial-gradient(circle at 2px 2px, #D4AF37 1px, transparent 0)',
+          backgroundImage: 'radial-gradient(circle at 2px 2px, #fa9906 1px, transparent 0)',
           backgroundSize: '40px 40px'
         }} />
       </div>
@@ -46,7 +46,7 @@ export function PurityCalculator() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-[#D4AF37] mb-4 block tracking-wide">АЛТНЫ ҮНЭ ЦЭНИЙ ТООЦООЛУУР</span>
+          <span className="text-[#fa9906] mb-4 block tracking-wide">АЛТНЫ ҮНЭ ЦЭНИЙ ТООЦООЛУУР</span>
           <h2 className="text-white mb-4 text-4xl font-bold">Алтны үнэ цэнийг тооцоолох</h2>
           <p className="text-zinc-400 max-w-2xl mx-auto">
             Одоогийн зах зээлийн үнэ дээр үндэслэн алтны үнэ цэнийг шууд тооцоолох
@@ -63,7 +63,7 @@ export function PurityCalculator() {
           >
             <div className="bg-white/95 backdrop-blur-md rounded-3xl p-8 shadow-2xl border border-white/20">
               <div className="flex items-center gap-3 mb-8">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#D4AF37] to-[#FFD700] rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-gradient-to-br from-[#fa9906] to-[#FFD700] rounded-xl flex items-center justify-center">
                   <Calculator className="w-6 h-6 text-zinc-900" />
                 </div>
                 <h3 className="text-zinc-900 text-xl font-semibold">Алтны сорьц тооцоолуур</h3>
@@ -81,7 +81,7 @@ export function PurityCalculator() {
                     placeholder="Граммаар жин оруулах"
                     value={weight}
                     onChange={(e) => setWeight(e.target.value)}
-                    className="h-12 border-zinc-300 rounded-xl focus:ring-[#D4AF37] focus:border-[#D4AF37]"
+                    className="h-12 border-zinc-300 rounded-xl focus:ring-[#fa9906] focus:border-[#fa9906]"
                   />
                 </div>
 
@@ -95,7 +95,7 @@ export function PurityCalculator() {
                         onClick={() => setKarat(k)}
                         className={`py-3 rounded-xl transition-all duration-300 font-semibold ${
                           karat === k
-                            ? "bg-gradient-to-br from-[#D4AF37] to-[#FFD700] text-zinc-900 shadow-lg"
+                            ? "bg-gradient-to-br from-[#fa9906] to-[#FFD700] text-zinc-900 shadow-lg"
                             : "bg-zinc-100 text-zinc-700 hover:bg-zinc-200"
                         }`}
                       >
@@ -127,7 +127,7 @@ export function PurityCalculator() {
                       key={value}
                       initial={{ scale: 0.9, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
-                      className="text-[#D4AF37] text-4xl font-bold"
+                      className="text-[#fa9906] text-4xl font-bold"
                     >
                       ${value.toFixed(2)}
                     </motion.div>
@@ -137,7 +137,7 @@ export function PurityCalculator() {
                   </div>
                 </div>
 
-                <button className="w-full py-4 bg-gradient-to-r from-[#D4AF37] to-[#FFD700] hover:from-[#FFD700] hover:to-[#D4AF37] text-zinc-900 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl font-semibold">
+                <button className="w-full py-4 bg-gradient-to-r from-[#fa9906] to-[#FFD700] hover:from-[#FFD700] hover:to-[#fa9906] text-zinc-900 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl font-semibold">
                   Мэргэжлийн шинжилгээ захиалах
                 </button>
               </div>
@@ -173,10 +173,10 @@ export function PurityCalculator() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="flex items-start gap-4 p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 hover:border-[#D4AF37]/30 transition-colors"
+                  className="flex items-start gap-4 p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 hover:border-[#fa9906]/30 transition-colors"
                 >
-                  <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-[#D4AF37]/20 to-[#FFD700]/20 rounded-xl flex items-center justify-center">
-                    <span className="text-[#D4AF37] font-bold">{item.karat}</span>
+                  <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-[#fa9906]/20 to-[#FFD700]/20 rounded-xl flex items-center justify-center">
+                    <span className="text-[#fa9906] font-bold">{item.karat}</span>
                   </div>
                   <div>
                     <div className="text-white mb-1 font-semibold">{item.purity} Цэвэр алт</div>
@@ -186,7 +186,7 @@ export function PurityCalculator() {
               ))}
             </div>
 
-            <div className="p-6 bg-[#D4AF37]/10 backdrop-blur-sm rounded-2xl border border-[#D4AF37]/30">
+            <div className="p-6 bg-[#fa9906]/10 backdrop-blur-sm rounded-2xl border border-[#fa9906]/30">
               <p className="text-zinc-300">
                 💡 <strong className="text-white">Мэргэжлийн зөвлөмж:</strong> Алтны сорьцыг мэргэжлийн 
                 лабораторийн шинжилгээгээр байнга баталгаажуулна уу. Манай XRF технологи нь таны 

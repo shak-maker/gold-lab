@@ -56,10 +56,10 @@ export function FAQSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-[#D4AF37]/20 to-[#FFD700]/20 rounded-2xl mb-6">
-            <HelpCircle className="w-8 h-8 text-[#D4AF37]" />
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-[#fa9906]/20 to-[#FFD700]/20 rounded-2xl mb-6">
+            <HelpCircle className="w-8 h-8 text-[#fa9906]" />
           </div>
-          <span className="text-[#D4AF37] mb-4 block tracking-wide font-medium">Түгээмэл асуултууд</span>
+          <span className="text-[#fa9906] mb-4 block tracking-wide font-medium">Түгээмэл асуултууд</span>
           <h2 className="text-zinc-900 mb-4 text-4xl md:text-5xl font-bold">
             Асуулт хариулт
           </h2>
@@ -82,7 +82,7 @@ export function FAQSection() {
                 onClick={() => toggleFAQ(index)}
                 className="w-full px-6 md:px-8 py-6 flex items-center justify-between text-left group"
               >
-                <h3 className="text-zinc-900 font-semibold text-lg md:text-xl pr-8 group-hover:text-[#D4AF37] transition-colors">
+                <h3 className="text-zinc-900 font-semibold text-lg md:text-xl pr-8 group-hover:text-[#fa9906] transition-colors">
                   {faq.question}
                 </h3>
                 <motion.div
@@ -90,7 +90,7 @@ export function FAQSection() {
                   transition={{ duration: 0.3 }}
                   className="flex-shrink-0"
                 >
-                  <ChevronDown className="w-5 h-5 text-zinc-400 group-hover:text-[#D4AF37] transition-colors" />
+                  <ChevronDown className="w-5 h-5 text-zinc-400 group-hover:text-[#fa9906] transition-colors" />
                 </motion.div>
               </button>
               
@@ -131,7 +131,7 @@ export function FAQSection() {
           </p>
           <a
             href="#contact"
-            className="inline-block px-8 py-3 bg-gradient-to-r from-[#D4AF37] to-[#FFD700] text-zinc-900 rounded-xl hover:from-[#FFD700] hover:to-[#D4AF37] transition-all duration-300 font-semibold shadow-lg shadow-[#D4AF37]/20"
+            className="inline-block px-8 py-3 bg-gradient-to-r from-[#fa9906] to-[#FFD700] text-zinc-900 rounded-xl hover:from-[#FFD700] hover:to-[#fa9906] transition-all duration-300 font-semibold shadow-lg shadow-[#fa9906]/20"
           >
             Бидэнтэй холбогдох
           </a>

@@ -1,3 +1,4 @@
+import { NavBar } from "@/components/NavBar";
 import { HeroSection } from "@/components/HeroSection";
 import { ProcessSection } from "@/components/ProcessSection";
 import { ServicesSection } from "@/components/ServicesSection";
@@ -11,6 +12,7 @@ import { Footer } from "@/components/Footer";
 export default function Home() {
   return (
     <main className="min-h-screen bg-white">
+      <NavBar />
       <HeroSection />
       <ProcessSection />
       <ServicesSection />

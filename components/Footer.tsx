@@ -17,16 +17,16 @@ export function Footer() {
               <div className="w-12 h-12 flex items-center justify-center">
                 <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                   {/* Outer Circle */}
-                  <circle cx="24" cy="24" r="22" stroke="#FF6600" strokeWidth="2" fill="none" />
+                  <circle cx="24" cy="24" r="22" stroke="#fa9906" strokeWidth="2" fill="none" />
                   {/* Outer Diamond (rotated square outline) */}
-                  <path d="M24 6 L38 24 L24 42 L10 24 Z" stroke="#FF6600" strokeWidth="2" fill="none" />
+                  <path d="M24 6 L38 24 L24 42 L10 24 Z" stroke="#fa9906" strokeWidth="2" fill="none" />
                   {/* Inner Diamond (rotated square filled) */}
-                  <path d="M24 12 L32 24 L24 36 L16 24 Z" fill="#FF6600" />
+                  <path d="M24 12 L32 24 L24 36 L16 24 Z" fill="#fa9906" />
                 </svg>
               </div>
               {/* YMCT Text */}
               <span 
-                className="text-[#FF6600] tracking-wide font-bold text-xl"
+                className="text-[#fa9906] tracking-wide font-bold text-xl"
                 style={{
                   textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5), 1px 1px 2px rgba(255, 102, 0, 0.3)"
                 }}
@@ -43,9 +43,9 @@ export function Footer() {
                   key={index}
                   href="#"
                   whileHover={{ scale: 1.1, y: -2 }}
-                  className="w-10 h-10 bg-white/5 hover:bg-[#D4AF37]/20 rounded-lg flex items-center justify-center border border-white/10 hover:border-[#D4AF37]/30 transition-all duration-300"
+                  className="w-10 h-10 bg-white/5 hover:bg-[#fa9906]/20 rounded-lg flex items-center justify-center border border-white/10 hover:border-[#fa9906]/30 transition-all duration-300"
                 >
-                  <Icon className="w-5 h-5 text-zinc-400 hover:text-[#D4AF37]" />
+                  <Icon className="w-5 h-5 text-zinc-400 hover:text-[#fa9906]" />
                 </motion.a>
               ))}
             </div>
@@ -66,9 +66,9 @@ export function Footer() {
                 <li key={service}>
                   <a
                     href="#"
-                    className="text-zinc-400 hover:text-[#D4AF37] transition-colors flex items-center gap-2"
+                    className="text-zinc-400 hover:text-[#fa9906] transition-colors flex items-center gap-2"
                   >
-                    <div className="w-1 h-1 bg-[#D4AF37] rounded-full" />
+                    <div className="w-1 h-1 bg-[#fa9906] rounded-full" />
                     {service}
                   </a>
                 </li>
@@ -91,9 +91,9 @@ export function Footer() {
                 <li key={item.label}>
                   <a
                     href={item.href}
-                    className="text-zinc-400 hover:text-[#D4AF37] transition-colors flex items-center gap-2"
+                    className="text-zinc-400 hover:text-[#fa9906] transition-colors flex items-center gap-2"
                   >
-                    <div className="w-1 h-1 bg-[#D4AF37] rounded-full" />
+                    <div className="w-1 h-1 bg-[#fa9906] rounded-full" />
                     {item.label}
                   </a>
                 </li>
@@ -107,7 +107,7 @@ export function Footer() {
             <div className="space-y-4 mb-6">
               <a
                 href="tel:+1234567890"
-                className="flex items-center gap-3 text-zinc-400 hover:text-[#D4AF37] transition-colors"
+                className="flex items-center gap-3 text-zinc-400 hover:text-[#fa9906] transition-colors"
               >
                 <div className="w-10 h-10 bg-white/5 rounded-lg flex items-center justify-center">
                   <Phone className="w-5 h-5" />
@@ -116,7 +116,7 @@ export function Footer() {
               </a>
               <a
                 href="mailto:info@goldtestlab.com"
-                className="flex items-center gap-3 text-zinc-400 hover:text-[#D4AF37] transition-colors"
+                className="flex items-center gap-3 text-zinc-400 hover:text-[#fa9906] transition-colors"
               >
                 <div className="w-10 h-10 bg-white/5 rounded-lg flex items-center justify-center">
                   <Mail className="w-5 h-5" />
@@ -156,9 +156,9 @@ export function Footer() {
               <Input
                 type="email"
                 placeholder="Имэйл хаягаа оруулах"
-                className="bg-white/5 border-white/10 text-white placeholder:text-zinc-500 rounded-xl h-12 focus:ring-[#D4AF37] focus:border-[#D4AF37]"
+                className="bg-white/5 border-white/10 text-white placeholder:text-zinc-500 rounded-xl h-12 focus:ring-[#fa9906] focus:border-[#fa9906]"
               />
-              <Button className="bg-gradient-to-r from-[#D4AF37] to-[#FFD700] hover:from-[#FFD700] hover:to-[#D4AF37] text-zinc-900 border-0 rounded-xl px-6">
+              <Button className="bg-gradient-to-r from-[#fa9906] to-[#FFD700] hover:from-[#FFD700] hover:to-[#fa9906] text-zinc-900 border-0 rounded-xl px-6">
                 Бүртгүүлэх
               </Button>
             </div>
@@ -174,7 +174,7 @@ export function Footer() {
             {["ISO 9001:2015", "NABL Accredited", "BIS Certified", "Lab Quality Plus"].map((cert) => (
               <div
                 key={cert}
-                className="px-6 py-3 bg-white/5 rounded-xl border border-white/10 text-zinc-400 hover:border-[#D4AF37]/30 transition-colors"
+                className="px-6 py-3 bg-white/5 rounded-xl border border-white/10 text-zinc-400 hover:border-[#fa9906]/30 transition-colors"
               >
                 {cert}
               </div>
@@ -189,13 +189,13 @@ export function Footer() {
               © 2025 YMCT. Бүх эрх хуулиар хамгаалагдсан.
             </p>
             <div className="flex gap-6 text-zinc-500">
-              <a href="#" className="hover:text-[#D4AF37] transition-colors">
+              <a href="#" className="hover:text-[#fa9906] transition-colors">
                 Үйлчилгээний нөхцөл
               </a>
-              <a href="#" className="hover:text-[#D4AF37] transition-colors">
+              <a href="#" className="hover:text-[#fa9906] transition-colors">
                 Нууцлалын бодлого
               </a>
-              <a href="#" className="hover:text-[#D4AF37] transition-colors">
+              <a href="#" className="hover:text-[#fa9906] transition-colors">
                 Cookie бодлого
               </a>
             </div>
@@ -204,7 +204,7 @@ export function Footer() {
       </div>
 
       {/* Background Decoration */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#fa9906] to-transparent" />
     </footer>
   );
 }

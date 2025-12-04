@@ -2,7 +2,6 @@
 
 import { motion } from "motion/react";
 import { Star, Quote } from "lucide-react";
-import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 const testimonials = [
   {
@@ -39,7 +38,7 @@ export function TestimonialsSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-[#D4AF37] mb-4 block tracking-wide">ҮЙЛЧЛҮҮЛЭГЧДИЙН СЭТГЭГДЭЛ</span>
+          <span className="text-[#fa9906] mb-4 block tracking-wide">ҮЙЛЧЛҮҮЛЭГЧДИЙН СЭТГЭГДЭЛ</span>
           <h2 className="text-zinc-900 mb-4 text-4xl font-bold">Манай үйлчлүүлэгчид юу хэлж байна</h2>
           <p className="text-zinc-600 max-w-2xl mx-auto">
             Бүс нутаг даяарх гоёл чимэглэлийн дэлгүүр, худалдаачин, хувь хүмүүст итгэлтэй
@@ -61,8 +60,8 @@ export function TestimonialsSection() {
                 whileHover={{ y: -8 }}
               >
                 {/* Quote Icon */}
-                <div className="w-12 h-12 bg-gradient-to-br from-[#D4AF37]/10 to-[#FFD700]/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Quote className="w-6 h-6 text-[#D4AF37]" />
+                <div className="w-12 h-12 bg-gradient-to-br from-[#fa9906]/10 to-[#FFD700]/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Quote className="w-6 h-6 text-[#fa9906]" />
                 </div>
 
                 {/* Rating */}
@@ -70,7 +69,7 @@ export function TestimonialsSection() {
                   {Array.from({ length: testimonial.rating }).map((_, i) => (
                     <Star
                       key={i}
-                      className="w-4 h-4 fill-[#D4AF37] text-[#D4AF37]"
+                      className="w-4 h-4 fill-[#fa9906] text-[#fa9906]"
                     />
                   ))}
                 </div>
@@ -83,14 +82,14 @@ export function TestimonialsSection() {
                 {/* Author */}
                 <div className="flex items-center gap-4 pt-6 border-t border-zinc-100">
                   <div className="relative">
-                    <div className="w-14 h-14 rounded-full overflow-hidden ring-2 ring-[#D4AF37]/30 group-hover:ring-[#D4AF37] transition-all duration-300">
-                      <ImageWithFallback
+                    <div className="w-14 h-14 rounded-full overflow-hidden ring-2 ring-[#fa9906]/30 group-hover:ring-[#fa9906] transition-all duration-300">
+                      <img
                         src={testimonial.image}
                         alt={testimonial.name}
                         className="w-full h-full object-cover"
                       />
                     </div>
-                    <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-[#D4AF37] rounded-full flex items-center justify-center">
+                    <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-[#fa9906] rounded-full flex items-center justify-center">
                       <svg className="w-3 h-3 text-zinc-900" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
                       </svg>
@@ -128,7 +127,7 @@ export function TestimonialsSection() {
               transition={{ delay: 0.5 + index * 0.1 }}
               className="text-center p-6 bg-white rounded-2xl border border-zinc-100"
             >
-              <div className="text-[#D4AF37] mb-2 font-bold text-xl">{stat.value}</div>
+              <div className="text-[#fa9906] mb-2 font-bold text-xl">{stat.value}</div>
               <div className="text-zinc-600 text-sm">{stat.label}</div>
             </motion.div>
           ))}
