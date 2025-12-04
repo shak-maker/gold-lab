@@ -6,24 +6,24 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 const testimonials = [
   {
-    name: "Sarah Mitchell",
-    role: "Jewelry Store Owner",
+    name: "Сараа Митчелл",
+    role: "Гоёл чимэглэлийн дэлгүүрийн эзэн",
     image: "https://images.unsplash.com/photo-1649589244330-09ca58e4fa64?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b21hbiUyMHByb2Zlc3Npb25hbCUyMHBvcnRyYWl0fGVufDF8fHx8MTc2MzMxODg4N3ww&ixlib=rb-4.1.0&q=80&w=1080",
-    content: "GoldTest Lab has been our trusted partner for over 5 years. Their XRF testing is incredibly accurate and the certified reports give our customers complete confidence. Highly professional service!",
+    content: "YMCT нь 5 жилээс дээш хугацаанд манай найдвартай түнш байсан. Тэдний XRF шинжилгээ маш нарийвчлалтай бөгөөд баталгаажсан тайлангууд манай үйлчлүүлэгчдэд бүрэн итгэл өгдөг. Маш мэргэжлийн үйлчилгээ!",
     rating: 5,
   },
   {
-    name: "Michael Chen",
-    role: "Gold Dealer",
+    name: "Михаэл Чен",
+    role: "Алтны худалдаачин",
     image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzc21hbiUyMHBvcnRyYWl0fGVufDF8fHx8MTc2MzMxOTEyOXww&ixlib=rb-4.1.0&q=80&w=1080",
-    content: "The turnaround time is exceptional. I get detailed reports within 24 hours, which is crucial for my business. The team is knowledgeable and the pricing is fair. Best gold testing lab in the region.",
+    content: "Хариу өгөх хугацаа гайхалтай. Би 24 цагийн дотор нарийвчилсан тайлан авдаг нь манай бизнест маш чухал. Баг нь мэдлэгтэй, үнэ нь шударга. Бүс нутагт хамгийн сайн алтны шинжилгээний лаборатори.",
     rating: 5,
   },
   {
-    name: "Dr. Priya Sharma",
-    role: "Research Scientist",
+    name: "Эмч Прия Шарма",
+    role: "Судалгааны эрдэмтэн",
     image: "https://images.unsplash.com/photo-1576670158706-8d5b044b61da?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBzY2llbnRpc3QlMjB3b21hbnxlbnwxfHx8fDE3NjMzNDYwNzd8MA&ixlib=rb-4.1.0&q=80&w=1080",
-    content: "As a metallurgist, I appreciate their commitment to accuracy and modern testing methods. Their state-of-the-art equipment and ISO certification make them stand out. Excellent technical expertise.",
+    content: "Металлургийн мэргэжилтэн болохын хувьд би тэдний нарийвчлал, орчин үеийн шинжилгээний аргад зориулсан хүчин чармайлтыг үнэлдэг. Тэдний дэвшилтэт тоног төхөөрөмж, ISO баталгаажуулалт нь тэднийг онцлох болгодог. Гайхалтай техникийн мэргэжил.",
     rating: 5,
   },
 ];
@@ -39,10 +39,10 @@ export function TestimonialsSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-[#D4AF37] mb-4 block tracking-wide">TESTIMONIALS</span>
-          <h2 className="text-zinc-900 mb-4 text-4xl font-bold">What Our Clients Say</h2>
+          <span className="text-[#D4AF37] mb-4 block tracking-wide">ҮЙЛЧЛҮҮЛЭГЧДИЙН СЭТГЭГДЭЛ</span>
+          <h2 className="text-zinc-900 mb-4 text-4xl font-bold">Манай үйлчлүүлэгчид юу хэлж байна</h2>
           <p className="text-zinc-600 max-w-2xl mx-auto">
-            Trusted by jewelry stores, dealers, and individuals across the region
+            Бүс нутаг даяарх гоёл чимэглэлийн дэлгүүр, худалдаачин, хувь хүмүүст итгэлтэй
           </p>
         </motion.div>
 
@@ -115,10 +115,10 @@ export function TestimonialsSection() {
           className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8"
         >
           {[
-            { label: "ISO Certified", value: "9001:2015" },
-            { label: "Tests Completed", value: "15,000+" },
-            { label: "Client Satisfaction", value: "99.8%" },
-            { label: "Response Time", value: "<24hrs" },
+            { label: "ISO баталгаажсан", value: "9001:2015" },
+            { label: "Хийсэн шинжилгээ", value: "15,000+" },
+            { label: "Үйлчлүүлэгчийн сэтгэл ханамж", value: "99.8%" },
+            { label: "Хариу өгөх хугацаа", value: "<24ц" },
           ].map((stat, index) => (
             <motion.div
               key={stat.label}

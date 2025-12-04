@@ -6,27 +6,27 @@ import { Microscope, ScanLine, Gem, FileCheck } from "lucide-react";
 const services = [
   {
     icon: Microscope,
-    title: "Gold Purity Testing",
-    description: "Comprehensive analysis to determine exact gold content and karat rating using multiple testing methods.",
-    features: ["Fire Assay", "Touchstone Method", "24hr Results"],
+    title: "Алтны хайлшид химийн шинжилгээ хийх",
+    description: "Олон төрлийн шинжилгээний арга ашиглан алтны агууламж, каратыг нарийвчлалтай тогтоох цогц шинжилгээ.",
+    features: ["Галт шинжилгээ", "Тоосон чулууны арга", "24 цагийн үр дүн"],
   },
   {
     icon: ScanLine,
-    title: "XRF Spectrometer Analysis",
-    description: "Advanced non-destructive testing using X-ray fluorescence for precise elemental composition.",
-    features: ["Non-Destructive", "Multi-Element", "Instant Results"],
+    title: "Мөнгөн гулдмайд шинжилгээ хийх",
+    description: "Элемент бүрдлийг нарийвчлалтай тогтоох X-ray fluorescence ашиглан гэмтээхгүй дэвшилтэт шинжилгээ.",
+    features: ["Гэмтээхгүй", "Олон элемент", "Шууд үр дүн"],
   },
   {
     icon: Gem,
-    title: "Jewelry Verification",
-    description: "Complete authentication and quality assessment of gold jewelry, coins, and precious metal items.",
-    features: ["Authenticity Check", "Hallmark Verification", "Detailed Report"],
+    title: "Үнэт металл хайлж гулдмайлах",
+    description: "Алтны гоёл чимэглэл, зоос, үнэт металлын бүтээгдэхүүний бүрэн баталгаажуулалт, чанарын үнэлгээ.",
+    features: ["Жинхэнэ эсэхийг шалгах", "Тамга баталгаажуулалт", "Нарийвчилсан тайлан"],
   },
   {
     icon: FileCheck,
-    title: "Lab Certification Reports",
-    description: "Official certified documentation with detailed analysis, suitable for legal and insurance purposes.",
-    features: ["ISO Certified", "Legal Valid", "Digital & Print"],
+    title: "Лабораторийн баталгаажуулалтын тайлан",
+    description: "Нарийвчилсан шинжилгээ бүхий албан ёсны баталгаажсан баримт бичиг, хууль эрх зүйн болон даатгалын зорилгоор тохиромжтой.",
+    features: ["ISO баталгаажсан", "Хууль ёсны хүчинтэй", "Цахим болон хэвлэмэл"],
   },
 ];
 
@@ -41,10 +41,10 @@ export function ServicesSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-[#D4AF37] mb-4 block tracking-wide">OUR SERVICES</span>
-          <h2 className="text-zinc-900 mb-4 text-4xl font-bold">Comprehensive Gold Testing Solutions</h2>
+          <span className="text-[#D4AF37] mb-4 block tracking-wide">Бидний Yйлчилгээ</span>
+          <h2 className="text-zinc-900 mb-4 text-4xl font-bold">Бүтээгдэхүүнүүдийн дэлгэрэнгүй шинжилгээ</h2>
           <p className="text-zinc-600 max-w-2xl mx-auto">
-            Professional laboratory services backed by cutting-edge technology and certified expertise
+            Үнэт металлын сорьц тогтоох лабораторийн дэлгэрэнгүй шинжилгээ
           </p>
         </motion.div>
 
@@ -106,12 +106,12 @@ export function ServicesSection() {
           transition={{ delay: 0.4 }}
           className="mt-16 p-8 bg-gradient-to-r from-zinc-900 to-zinc-800 rounded-3xl text-center"
         >
-          <h3 className="text-white mb-3 text-2xl font-semibold">Need a Custom Solution?</h3>
+          <h3 className="text-white mb-3 text-2xl font-semibold">Тусгай шийдэл хэрэгтэй юу?</h3>
           <p className="text-zinc-300 mb-6 max-w-2xl mx-auto">
-            We offer specialized testing packages for jewelers, dealers, and institutions
+            Бид гоёл чимэглэлийн дэлгүүр, худалдаачин, байгууллагуудад зориулсан тусгай шинжилгээний багц үйлчилгээ санал болгодог
           </p>
           <button className="px-8 py-3 bg-white text-zinc-900 rounded-xl hover:bg-zinc-100 transition-colors">
-            Contact Our Team
+            Бидний багтай холбогдох
           </button>
         </motion.div>
       </div>

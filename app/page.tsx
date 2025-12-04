@@ -5,6 +5,7 @@ import { AboutUsSection } from "@/components/AboutUsSection";
 import { WhyChooseUs } from "@/components/WhyChooseUs";
 import { PurityCalculator } from "@/components/PurityCalculator";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
+import { FAQSection } from "@/components/FAQSection";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
       <WhyChooseUs />
       <PurityCalculator />
       <TestimonialsSection />
+      <FAQSection />
       <Footer />
     </main>
   );

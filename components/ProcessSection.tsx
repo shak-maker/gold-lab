@@ -8,29 +8,29 @@ const processes = [
   {
     id: 1,
     icon: Package,
-    title: "Sample Drop-off",
-    description: "Submit your gold items at our secure laboratory with complete confidentiality and safety measures.",
+    title: "Дээж хүлээлгэх",
+    description: "Таны алтны бүтээгдэхүүнийг манай аюулгүй лабораторид нууцлал, аюулгүй байдлыг хангаж хүлээн авна.",
     color: "#D4AF37",
   },
   {
     id: 2,
     icon: Beaker,
-    title: "Chemical Analysis",
-    description: "Our experts perform precise chemical testing using acid tests and other proven methodologies.",
+    title: "Химийн шинжилгээ",
+    description: "Манай мэргэжилтнүүд хүчилт шинжилгээ болон бусад баталгаажсан аргачлалуудыг ашиглан нарийвчилсан химийн шинжилгээ хийдэг.",
     color: "#FFD700",
   },
   {
     id: 3,
     icon: Scan,
-    title: "XRF Scanning",
-    description: "Non-destructive X-ray fluorescence technology provides detailed elemental composition analysis.",
+    title: "XRF Скан хийх",
+    description: "Гэмтээхгүй X-ray fluorescence технологи нь нарийвчилсан элемент бүрдлийн шинжилгээг өгдөг.",
     color: "#D4AF37",
   },
   {
     id: 4,
     icon: Award,
-    title: "Certification",
-    description: "Receive your official certified report with detailed purity analysis and quality assurance seal.",
+    title: "Баталгаажуулалт",
+    description: "Нарийвчилсан сорьц шинжилгээ, чанарын баталгаажуулалтын тамга бүхий албан ёсны баталгаажсан тайланг хүлээн авна.",
     color: "#FFD700",
   },
 ];
@@ -48,10 +48,10 @@ export function ProcessSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-[#D4AF37] mb-4 block tracking-wide">HOW IT WORKS</span>
-          <h2 className="text-zinc-900 mb-4 text-4xl font-bold">Our Testing Process</h2>
+          <span className="text-[#D4AF37] mb-4 block tracking-wide">ХЭРХЭН АЖИЛЛАДАГ</span>
+          <h2 className="text-zinc-900 mb-4 text-4xl font-bold">Манай шинжилгээний үйл явц</h2>
           <p className="text-zinc-600 max-w-2xl mx-auto">
-            A transparent, professional four-step process ensuring accurate gold purity analysis
+            Алтны сорьцыг нарийвчлалтай шинжилэх ил тод, мэргэжлийн дөрвөн алхамт үйл явц
           </p>
         </motion.div>
 
@@ -131,10 +131,10 @@ export function ProcessSection() {
           className="text-center mt-16"
         >
           <p className="text-zinc-600 mb-4">
-            Ready to test your gold items?
+            Алтны бүтээгдэхүүнээ шалгуулахад бэлэн үү?
           </p>
           <button className="px-8 py-3 bg-gradient-to-r from-[#D4AF37] to-[#FFD700] hover:from-[#FFD700] hover:to-[#D4AF37] text-zinc-900 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl font-semibold">
-            Start Your Test
+            Шинжилгээ эхлүүлэх
           </button>
         </motion.div>
       </div>

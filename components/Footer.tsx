@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Sparkles, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 
@@ -12,14 +12,30 @@ export function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand Column */}
           <div>
-            <div className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 bg-gradient-to-br from-[#D4AF37] to-[#FFD700] rounded-lg flex items-center justify-center">
-                <Sparkles className="w-6 h-6 text-zinc-900" />
+            <div className="flex items-center gap-3 mb-6">
+              {/* YMCT Logo Symbol */}
+              <div className="w-12 h-12 flex items-center justify-center">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  {/* Outer Circle */}
+                  <circle cx="24" cy="24" r="22" stroke="#FF6600" strokeWidth="2" fill="none" />
+                  {/* Outer Diamond (rotated square outline) */}
+                  <path d="M24 6 L38 24 L24 42 L10 24 Z" stroke="#FF6600" strokeWidth="2" fill="none" />
+                  {/* Inner Diamond (rotated square filled) */}
+                  <path d="M24 12 L32 24 L24 36 L16 24 Z" fill="#FF6600" />
+                </svg>
               </div>
-              <span className="tracking-wide font-semibold">GoldTest Lab</span>
+              {/* YMCT Text */}
+              <span 
+                className="text-[#FF6600] tracking-wide font-bold text-xl"
+                style={{
+                  textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5), 1px 1px 2px rgba(255, 102, 0, 0.3)"
+                }}
+              >
+                YMCT
+              </span>
             </div>
             <p className="text-zinc-400 mb-6">
-              Your trusted partner in precision gold testing and quality assurance. Certified, accurate, and reliable.
+              Нарийвчлалтай алтны шинжилгээ, чанарын баталгаажуулалтын таны найдвартай түнш. Баталгаажсан, нарийвчлалтай, найдвартай.
             </p>
             <div className="flex gap-3">
               {[Facebook, Twitter, Instagram, Linkedin].map((Icon, index) => (
@@ -37,15 +53,15 @@ export function Footer() {
 
           {/* Services Column */}
           <div>
-            <h3 className="text-white mb-6 font-semibold">Services</h3>
+            <h3 className="text-white mb-6 font-semibold">Үйлчилгээ</h3>
             <ul className="space-y-3">
               {[
-                "Gold Purity Testing",
-                "XRF Analysis",
-                "Jewelry Verification",
-                "Lab Certification",
-                "Precious Metal Testing",
-                "Consultation Services",
+                "Алтны сорьц шинжилгээ",
+                "XRF шинжилгээ",
+                "Гоёл чимэглэлийн баталгаажуулалт",
+                "Лабораторийн баталгаажуулалт",
+                "Үнэт металлын шинжилгээ",
+                "Зөвлөх үйлчилгээ",
               ].map((service) => (
                 <li key={service}>
                   <a
@@ -62,15 +78,15 @@ export function Footer() {
 
           {/* Support Column */}
           <div>
-            <h3 className="text-white mb-6 font-semibold">Support</h3>
+            <h3 className="text-white mb-6 font-semibold">Дэмжлэг</h3>
             <ul className="space-y-3">
               {[
-                { label: "About Us", href: "#about-us" },
-                { label: "FAQ", href: "#" },
-                { label: "Testing Process", href: "#process" },
-                { label: "Pricing", href: "#" },
-                { label: "Certifications", href: "#" },
-                { label: "Privacy Policy", href: "#" },
+                { label: "Бидний тухай", href: "#about-us" },
+                { label: "Түгээмэл асуулт", href: "#faq" },
+                { label: "Шинжилгээний үйл явц", href: "#process" },
+                { label: "Үнэ", href: "#" },
+                { label: "Баталгаажуулалт", href: "#" },
+                { label: "Нууцлалын бодлого", href: "#" },
               ].map((item) => (
                 <li key={item.label}>
                   <a
@@ -87,7 +103,7 @@ export function Footer() {
 
           {/* Contact Column */}
           <div>
-            <h3 className="text-white mb-6 font-semibold">Contact Us</h3>
+            <h3 className="text-white mb-6 font-semibold">Холбоо барих</h3>
             <div className="space-y-4 mb-6">
               <a
                 href="tel:+1234567890"
@@ -96,7 +112,7 @@ export function Footer() {
                 <div className="w-10 h-10 bg-white/5 rounded-lg flex items-center justify-center">
                   <Phone className="w-5 h-5" />
                 </div>
-                <span>+1 (234) 567-890</span>
+                <span>99020319, 88010600</span>
               </a>
               <a
                 href="mailto:info@goldtestlab.com"
@@ -105,20 +121,21 @@ export function Footer() {
                 <div className="w-10 h-10 bg-white/5 rounded-lg flex items-center justify-center">
                   <Mail className="w-5 h-5" />
                 </div>
-                <span>info@goldtestlab.com</span>
+                <span>assaylabmon@gmail.com</span>
               </a>
               <div className="flex items-start gap-3 text-zinc-400">
                 <div className="w-10 h-10 bg-white/5 rounded-lg flex items-center justify-center flex-shrink-0">
                   <MapPin className="w-5 h-5" />
                 </div>
-                <span>123 Laboratory Street,<br />Tech City, TC 12345</span>
+                <span>Хан-Уул дүүргийн 3-р хороо, Үйлдвэрийн баруун бүс
+                17070 82 тоот. Тайгер цогцолборын В1 давхар.</span>
               </div>
             </div>
 
             {/* WhatsApp Button */}
             <Button className="w-full bg-green-600 hover:bg-green-700 text-white border-0 rounded-xl">
               <Phone className="w-4 h-4 mr-2" />
-              WhatsApp Us
+              WhatsApp-аар холбогдох
             </Button>
           </div>
         </div>
@@ -131,18 +148,18 @@ export function Footer() {
           className="border-t border-white/10 pt-12 mb-12"
         >
           <div className="max-w-2xl mx-auto text-center">
-            <h3 className="text-white mb-3 text-xl font-semibold">Stay Updated</h3>
+            <h3 className="text-white mb-3 text-xl font-semibold">Мэдээлэл авах</h3>
             <p className="text-zinc-400 mb-6">
-              Subscribe to our newsletter for gold market insights and testing tips
+              Алтны зах зээлийн мэдээлэл, шинжилгээний зөвлөмж авахын тулд мэдээллийн хуудсанд бүртгүүлээрэй
             </p>
             <div className="flex gap-3 max-w-md mx-auto">
               <Input
                 type="email"
-                placeholder="Enter your email"
+                placeholder="Имэйл хаягаа оруулах"
                 className="bg-white/5 border-white/10 text-white placeholder:text-zinc-500 rounded-xl h-12 focus:ring-[#D4AF37] focus:border-[#D4AF37]"
               />
               <Button className="bg-gradient-to-r from-[#D4AF37] to-[#FFD700] hover:from-[#FFD700] hover:to-[#D4AF37] text-zinc-900 border-0 rounded-xl px-6">
-                Subscribe
+                Бүртгүүлэх
               </Button>
             </div>
           </div>
@@ -151,7 +168,7 @@ export function Footer() {
         {/* Certifications/Partners */}
         <div className="border-t border-white/10 pt-12 mb-12">
           <div className="text-center mb-6">
-            <span className="text-zinc-500">Certified & Accredited By</span>
+            <span className="text-zinc-500">Баталгаажсан & Батлагдсан</span>
           </div>
           <div className="flex flex-wrap justify-center items-center gap-8">
             {["ISO 9001:2015", "NABL Accredited", "BIS Certified", "Lab Quality Plus"].map((cert) => (
@@ -169,17 +186,17 @@ export function Footer() {
         <div className="border-t border-white/10 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-zinc-500">
-              © 2025 GoldTest Lab. All rights reserved.
+              © 2025 YMCT. Бүх эрх хуулиар хамгаалагдсан.
             </p>
             <div className="flex gap-6 text-zinc-500">
               <a href="#" className="hover:text-[#D4AF37] transition-colors">
-                Terms of Service
+                Үйлчилгээний нөхцөл
               </a>
               <a href="#" className="hover:text-[#D4AF37] transition-colors">
-                Privacy Policy
+                Нууцлалын бодлого
               </a>
               <a href="#" className="hover:text-[#D4AF37] transition-colors">
-                Cookie Policy
+                Cookie бодлого
               </a>
             </div>
           </div>

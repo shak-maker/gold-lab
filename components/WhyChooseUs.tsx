@@ -1,29 +1,29 @@
 "use client";
 
 import { motion } from "motion/react";
-import { CheckCircle2, Zap, Award, Clock } from "lucide-react";
+import { Award, Clock, Users, Heart } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 const features = [
   {
-    icon: CheckCircle2,
-    title: "99.9% Accuracy",
-    description: "State-of-the-art equipment ensures precision testing with minimal margin of error.",
-  },
-  {
     icon: Award,
-    title: "Modern Lab Tech",
-    description: "Latest XRF spectrometers and chemical analysis equipment for comprehensive testing.",
+    title: "Чанартай, найдвартай үйлчилгээ",
+    description: "Харилцагч, үйлчлүүлэгч нарт чанартай, найдвартай үйлчилгээг шуурхай үзүүлнэ.",
   },
   {
-    icon: Zap,
-    title: "Fast Results",
-    description: "Most tests completed within 24 hours with express options available.",
+    icon: Clock,
+    title: "Хурдан үр дүн",
+    description: "Ажлын цаг эрт эхэлдэг бөгөөд сорилтын дүн тухайн өдрөө гаргана.",
   },
   {
-    icon: CheckCircle2,
-    title: "Certified Reports",
-    description: "ISO-certified documentation accepted for legal, insurance, and trade purposes.",
+    icon: Users,
+    title: "Мэргэжлийн боловсон хүчин",
+    description: "Туршлагатай, мэргэжлийн боловсон хүчний баг танд найдвартай үйлчилгээ үзүүлнэ.",
+  },
+  {
+    icon: Heart,
+    title: "Тохь тухтай орчин",
+    description: "Тохь тухтай орчин, найрсаг хамт олон.",
   },
 ];
 
@@ -60,15 +60,15 @@ export function WhyChooseUs() {
                 <div className="grid grid-cols-3 gap-4">
                   <div className="text-center">
                     <div className="text-[#D4AF37] mb-1 font-bold text-xl">15K+</div>
-                    <div className="text-zinc-600 text-sm">Tests</div>
+                    <div className="text-zinc-600 text-sm">Шинжилгээ</div>
                   </div>
                   <div className="text-center border-x border-zinc-200">
                     <div className="text-[#D4AF37] mb-1 font-bold text-xl">10+</div>
-                    <div className="text-zinc-600 text-sm">Years</div>
+                    <div className="text-zinc-600 text-sm">Жил</div>
                   </div>
                   <div className="text-center">
                     <div className="text-[#D4AF37] mb-1 font-bold text-xl">100%</div>
-                    <div className="text-zinc-600 text-sm">Certified</div>
+                    <div className="text-zinc-600 text-sm">Баталгаажсан</div>
                   </div>
                 </div>
               </motion.div>
@@ -86,14 +86,14 @@ export function WhyChooseUs() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <span className="text-[#D4AF37] mb-4 block tracking-wide">WHY CHOOSE US</span>
+            <span className="text-[#D4AF37] mb-4 block tracking-wide">ЯАГААД БИДНИЙГ СОНГОХ ВЭ</span>
             <h2 className="text-zinc-900 mb-6 text-4xl font-bold">
-              Trust the Experts in Gold Quality Testing
+              Алтны чанарын шинжилгээний мэргэжилтнүүдэд итгэ
             </h2>
             <p className="text-zinc-600 mb-8 text-lg">
-              With over a decade of experience and cutting-edge technology, we deliver unmatched 
-              accuracy and reliability in gold purity analysis. Our certified laboratory follows 
-              international standards to ensure your complete confidence.
+              Арван жилийн туршлага болон дэвшилтэт технологитойгоор бид алтны сорьц шинжилгээнд 
+              харьцуулшгүй нарийвчлал, найдвартай байдлыг хангадаг. Манай баталгаажсан лаборатори 
+              олон улсын стандартыг дагаж таны бүрэн итгэлийг хангадаг.
             </p>
 
             <div className="space-y-6">
@@ -129,10 +129,10 @@ export function WhyChooseUs() {
             >
               <div className="flex items-center gap-4">
                 <button className="px-8 py-3 bg-gradient-to-r from-[#D4AF37] to-[#FFD700] hover:from-[#FFD700] hover:to-[#D4AF37] text-zinc-900 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl font-semibold">
-                  Schedule a Test
+                  Шинжилгээ захиалах
                 </button>
                 <button className="px-8 py-3 text-zinc-700 hover:text-[#D4AF37] transition-colors font-semibold">
-                  Learn More →
+                  Дэлгэрэнгүй мэдээлэл →
                 </button>
               </div>
             </motion.div>

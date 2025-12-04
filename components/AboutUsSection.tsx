@@ -7,46 +7,46 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 const values = [
   {
     icon: Shield,
-    title: "Integrity First",
-    description: "We maintain the highest ethical standards in every test we perform, ensuring complete transparency and honesty.",
+    title: "Шударга байдал эхлэл",
+    description: "Бид хийж буй бүх шинжилгээнд хамгийн өндөр ёс зүйн стандартыг баримталж, бүрэн ил тод байдал, шударга байдлыг хангадаг.",
   },
   {
     icon: Target,
-    title: "Precision Excellence",
-    description: "Our commitment to accuracy drives us to use only the most advanced testing equipment and methodologies.",
+    title: "Нарийвчлалын гайхамшиг",
+    description: "Нарийвчлалд зориулсан бидний хүчин чармайлт нь зөвхөн хамгийн дэвшилтэт шинжилгээний тоног төхөөрөмж, аргачлалуудыг ашиглахад хүргэдэг.",
   },
   {
     icon: Heart,
-    title: "Customer Focus",
-    description: "Your trust is our priority. We provide personalized service and clear communication throughout the testing process.",
+    title: "Үйлчлүүлэгчид төвлөрсөн",
+    description: "Таны итгэл бидний тэргүүн зорилго. Бид шинжилгээний бүх үйл явцад хувийн үйлчилгээ, тодорхой харилцааг хангадаг.",
   },
   {
     icon: Award,
-    title: "Continuous Innovation",
-    description: "We stay at the forefront of testing technology, constantly upgrading our methods and equipment.",
+    title: "Тасралтгүй шинэчлэл",
+    description: "Бид шинжилгээний технологийн урд эгнээнд байрлаж, арга барил, тоног төхөөрөмжөө байнга шинэчилж байдаг.",
   },
 ];
 
 const milestones = [
   {
     year: "2014",
-    title: "Foundation",
-    description: "GoldTest Lab was established with a vision to provide accurate, accessible gold testing services.",
+    title: "Үүсгэн байгуулалт",
+    description: "YMCT нь нарийвчлалтай, хүртээмжтэй алтны шинжилгээний үйлчилгээ үзүүлэх зорилгоор байгуулагдсан.",
   },
   {
     year: "2017",
-    title: "ISO Certification",
-    description: "Achieved ISO 9001:2015 certification, demonstrating our commitment to quality management.",
+    title: "ISO баталгаажуулалт",
+    description: "ISO 9001:2015 баталгаажуулалтыг хүлээн авч, чанарын удирдлагад зориулсан бидний хүчин чармайлтыг харуулсан.",
   },
   {
     year: "2020",
-    title: "Technology Upgrade",
-    description: "Invested in state-of-the-art XRF spectrometers, expanding our testing capabilities.",
+    title: "Технологийн шинэчлэл",
+    description: "Дэвшилтэт XRF спектрометрт хөрөнгө оруулж, шинжилгээний чадавхаа өргөжүүлсэн.",
   },
   {
     year: "2024",
-    title: "15,000+ Tests",
-    description: "Reached a milestone of over 15,000 successful tests, serving customers across the region.",
+    title: "15,000+ Шинжилгээ",
+    description: "15,000 гаруй амжилттай шинжилгээний түвшинд хүрч, бүс нутаг даяарх үйлчлүүлэгчдэд үйлчилж байна.",
   },
 ];
 
@@ -122,15 +122,15 @@ MNS ISO/IEC 17025:2018 “Сорилтын болон шалгалт тохир�
             <div className="flex items-center gap-6 pt-6 border-t border-zinc-200">
               <div>
                 <div className="text-[#D4AF37] text-3xl font-bold">10+</div>
-                <div className="text-zinc-600">Years Experience</div>
+                <div className="text-zinc-600">Жилийн туршлага</div>
               </div>
               <div>
                 <div className="text-[#D4AF37] text-3xl font-bold">15K+</div>
-                <div className="text-zinc-600">Tests Completed</div>
+                <div className="text-zinc-600">Хийсэн шинжилгээ</div>
               </div>
               <div>
                 <div className="text-[#D4AF37] text-3xl font-bold">99.9%</div>
-                <div className="text-zinc-600">Accuracy Rate</div>
+                <div className="text-zinc-600">Нарийвчлалын хувь</div>
               </div>
             </div>
           </motion.div>
@@ -148,11 +148,12 @@ MNS ISO/IEC 17025:2018 “Сорилтын болон шалгалт тохир�
             <div className="w-16 h-16 bg-gradient-to-br from-[#D4AF37]/10 to-[#FFD700]/10 rounded-2xl flex items-center justify-center mb-6">
               <Target className="w-8 h-8 text-[#D4AF37]" />
             </div>
-            <h3 className="text-2xl font-bold text-zinc-900 mb-4">Our Mission</h3>
+            <h3 className="text-2xl font-bold text-zinc-900 mb-4">Бидний Эрхэм Зорилго</h3>
             <p className="text-zinc-600 leading-relaxed">
-              To provide the most accurate, reliable, and accessible gold testing services while 
-              maintaining the highest standards of integrity and customer service. We empower our 
-              clients with precise information they can trust for their most important decisions.
+              Хамгийн нарийвчлалтай, найдвартай, хүртээмжтэй алтны шинжилгээний үйлчилгээг 
+              шударга байдал, үйлчлүүлэгчийн үйлчилгээний хамгийн өндөр стандартыг хадгалахын 
+              зэрэгцээ үзүүлэх. Бид үйлчлүүлэгчдэд хамгийн чухал шийдвэр гаргахад итгэж болох 
+              нарийвчилсан мэдээллийг өгдөг.
             </p>
           </motion.div>
 
@@ -166,11 +167,12 @@ MNS ISO/IEC 17025:2018 “Сорилтын болон шалгалт тохир�
             <div className="w-16 h-16 bg-gradient-to-br from-[#D4AF37]/10 to-[#FFD700]/10 rounded-2xl flex items-center justify-center mb-6">
               <Users className="w-8 h-8 text-[#D4AF37]" />
             </div>
-            <h3 className="text-2xl font-bold text-zinc-900 mb-4">Our Vision</h3>
+            <h3 className="text-2xl font-bold text-zinc-900 mb-4">Бидний Алсын Хараа</h3>
             <p className="text-zinc-600 leading-relaxed">
-              To become the global standard for gold testing excellence, recognized for our 
-              innovation, accuracy, and unwavering commitment to customer trust. We envision a 
-              future where everyone has access to professional-grade testing services.
+              Алтны шинжилгээний гайхамшгийн дэлхийн стандарт болох, шинэчлэл, нарийвчлал, 
+              үйлчлүүлэгчийн итгэлд зориулсан эрхэм зорилгоо хүлээн зөвшөөрүүлэх. Бид хүн 
+              бүр мэргэжлийн түвшний шинжилгээний үйлчилгээнд хүртэх боломжтой ирээдүйг 
+              төсөөлж байна.
             </p>
           </motion.div>
         </div>
@@ -184,8 +186,8 @@ MNS ISO/IEC 17025:2018 “Сорилтын болон шалгалт тохир�
           className="mb-24"
         >
           <div className="text-center mb-12">
-            <span className="text-[#D4AF37] mb-4 block tracking-wide">OUR VALUES</span>
-            <h3 className="text-3xl font-bold text-zinc-900">What Drives Us</h3>
+            <span className="text-[#D4AF37] mb-4 block tracking-wide">БИДНИЙ ҮНЭТ ЗҮЙЛС</span>
+            <h3 className="text-3xl font-bold text-zinc-900">Биднийг урагш түлхэж буй зүйл</h3>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((value, index) => {
@@ -218,8 +220,8 @@ MNS ISO/IEC 17025:2018 “Сорилтын болон шалгалт тохир�
           transition={{ duration: 0.6 }}
         >
           <div className="text-center mb-12">
-            <span className="text-[#D4AF37] mb-4 block tracking-wide">OUR JOURNEY</span>
-            <h3 className="text-3xl font-bold text-zinc-900">Milestones & Achievements</h3>
+            <span className="text-[#D4AF37] mb-4 block tracking-wide">БИДНИЙ АЯЛАЛ</span>
+            <h3 className="text-3xl font-bold text-zinc-900">Түүхэн үе шат & Амжилтууд</h3>
           </div>
           <div className="relative">
             {/* Timeline Line */}
