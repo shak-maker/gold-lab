@@ -1,7 +1,6 @@
 "use client";
 
 import React, { Suspense, useRef } from "react";
-// @ts-expect-error - TypeScript server cache issue, package is installed
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useGLTF, Environment, Center, Bounds } from "@react-three/drei";
 import * as THREE from "three";
