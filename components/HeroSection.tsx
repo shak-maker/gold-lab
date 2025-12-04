@@ -3,6 +3,12 @@
 import { motion } from "motion/react";
 import { Button } from "./ui/button";
 import { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
+
+// Dynamically import the 3D component to avoid SSR issues
+const GoldIngotCanvas = dynamic(() => import("./GoldIngotCanvas"), {
+  ssr: false,
+});
 
 export function HeroSection() {
   const [particles, setParticles] = useState<Array<{ id: number; x: number; y: number; delay: number }>>([]);
@@ -171,7 +177,7 @@ export function HeroSection() {
             </div>
           </motion.div>
 
-          {/* Abstract 3D Visual - Simplified version */}
+          {/* 3D Gold Ingot Visual */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -206,274 +212,9 @@ export function HeroSection() {
                   }}
                 />
                 
-                {/* 3D Gold Bar Container with Perspective */}
-                <div 
-                  className="relative w-96 h-64"
-                  style={{ 
-                    perspective: "1200px",
-                    perspectiveOrigin: "50% 50%"
-                  }}
-                >
-                  {/* 3D Gold Bar Wrapper - Rotating */}
-                  <motion.div
-                    animate={{ 
-                      rotateY: [0, 360]
-                    }}
-                    transition={{ 
-                      duration: 14, 
-                      repeat: Infinity, 
-                      ease: "linear"
-                    }}
-                    style={{ 
-                      transformStyle: "preserve-3d",
-                      width: "320px",
-                      height: "200px",
-                      position: "absolute",
-                      top: "50%",
-                      left: "50%",
-                      marginTop: "-100px",
-                      marginLeft: "-160px",
-                      transform: "rotateX(20deg)"
-                    }}
-                  >
-                    {/* Front Face - Main surface with text */}
-                    <div 
-                      style={{ 
-                        position: "absolute",
-                        width: "320px",
-                        height: "200px",
-                        background: `
-                          radial-gradient(ellipse at 30% 30%, rgba(255, 215, 0, 0.8) 0%, transparent 50%),
-                          radial-gradient(ellipse at 70% 70%, rgba(184, 148, 31, 0.6) 0%, transparent 50%),
-                          linear-gradient(135deg, 
-                            #FFD700 0%, 
-                            #F7C331 10%, 
-                            #F4C430 20%, 
-                            #F7C331 30%, 
-                            #FFD700 40%,
-                            #F4C430 50%,
-                            #F7C331 60%,
-                            #FFD700 70%,
-                            #F4C430 80%,
-                            #F7C331 90%,
-                            #FFD700 100%
-                          )
-                        `,
-                        borderRadius: "8px",
-                        transform: "translateZ(50px)",
-                        boxShadow: `
-                          inset 0 2px 10px rgba(255, 215, 0, 0.4),
-                          inset 0 -2px 10px rgba(184, 148, 31, 0.3),
-                          0 0 50px rgba(255, 215, 0, 0.5),
-                          0 10px 40px rgba(247, 195, 49, 0.4)
-                        `,
-                        border: "1px solid rgba(255, 215, 0, 0.4)"
-                      }}
-                    >
-                      {/* Engraved text effect */}
-                      <div className="h-full flex flex-col items-center justify-center text-center p-6 relative z-10">
-                        <div 
-                          className="text-xl font-bold mb-2"
-                          style={{
-                            color: "#8B4513",
-                            textShadow: `
-                              2px 2px 4px rgba(0, 0, 0, 0.5),
-                              inset 0 1px 2px rgba(139, 69, 19, 0.8),
-                              0 0 8px rgba(139, 69, 19, 0.3)
-                            `,
-                            letterSpacing: "2px"
-                          }}
-                        >
-                          FINE GOLD
-                        </div>
-                        <div 
-                          className="text-6xl font-bold mb-2"
-                          style={{
-                            color: "#6B3410",
-                            textShadow: `
-                              3px 3px 6px rgba(0, 0, 0, 0.6),
-                              inset 0 2px 4px rgba(107, 52, 16, 0.9),
-                              0 0 12px rgba(107, 52, 16, 0.4)
-                            `,
-                            letterSpacing: "4px"
-                          }}
-                        >
-                          999.9
-                        </div>
-                        <div 
-                          className="text-sm"
-                          style={{
-                            color: "#8B4513",
-                            textShadow: `
-                              1px 1px 3px rgba(0, 0, 0, 0.5),
-                              inset 0 1px 2px rgba(139, 69, 19, 0.8)
-                            `,
-                            letterSpacing: "1px"
-                          }}
-                        >
-                          NET WT 1000g
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Back Face */}
-                    <div 
-                      style={{ 
-                        position: "absolute",
-                        width: "320px",
-                        height: "200px",
-                        background: `
-                          radial-gradient(ellipse at 50% 50%, rgba(212, 175, 55, 0.4) 0%, transparent 70%),
-                          linear-gradient(135deg, 
-                            #D4AF37 0%, 
-                            #C9A227 15%, 
-                            #B8941F 30%, 
-                            #A67C1A 45%,
-                            #B8941F 60%,
-                            #C9A227 75%,
-                            #D4AF37 100%
-                          )
-                        `,
-                        borderRadius: "8px",
-                        transform: "rotateY(180deg) translateZ(50px)",
-                        boxShadow: `
-                          inset 0 2px 10px rgba(212, 175, 55, 0.3),
-                          inset 0 -2px 10px rgba(166, 124, 26, 0.2),
-                          0 0 30px rgba(212, 175, 55, 0.3)
-                        `,
-                        border: "1px solid rgba(212, 175, 55, 0.3)"
-                      }}
-                    />
-
-                    {/* Top Face */}
-                    <div 
-                      style={{ 
-                        position: "absolute",
-                        width: "320px",
-                        height: "70px",
-                        background: `
-                          linear-gradient(90deg, 
-                            #FFD700 0%, 
-                            #F7C331 20%, 
-                            #F4C430 40%,
-                            #F7C331 60%,
-                            #FFD700 80%,
-                            #F7C331 100%
-                          )
-                        `,
-                        borderRadius: "8px",
-                        transform: "rotateX(90deg) translateZ(100px)",
-                        transformOrigin: "center bottom",
-                        top: "0",
-                        left: "0",
-                        boxShadow: "0 0 25px rgba(255, 215, 0, 0.4)",
-                        border: "1px solid rgba(255, 215, 0, 0.3)"
-                      }}
-                    />
-
-                    {/* Bottom Face */}
-                    <div 
-                      style={{ 
-                        position: "absolute",
-                        width: "320px",
-                        height: "70px",
-                        background: `
-                          linear-gradient(90deg, 
-                            #C9A227 0%, 
-                            #B8941F 20%, 
-                            #A67C1A 40%,
-                            #B8941F 60%,
-                            #C9A227 80%,
-                            #B8941F 100%
-                          )
-                        `,
-                        borderRadius: "8px",
-                        transform: "rotateX(-90deg) translateZ(100px)",
-                        transformOrigin: "center top",
-                        top: "130px",
-                        left: "0",
-                        boxShadow: "0 0 20px rgba(184, 148, 31, 0.3)",
-                        border: "1px solid rgba(184, 148, 31, 0.3)"
-                      }}
-                    />
-
-                    {/* Right Face */}
-                    <div 
-                      style={{ 
-                        position: "absolute",
-                        width: "70px",
-                        height: "200px",
-                        background: `
-                          linear-gradient(180deg, 
-                            #FFD700 0%, 
-                            #F7C331 15%, 
-                            #F4C430 30%,
-                            #F7C331 45%,
-                            #FFD700 60%,
-                            #F7C331 75%,
-                            #F4C430 90%,
-                            #F7C331 100%
-                          )
-                        `,
-                        borderRadius: "8px",
-                        transform: "rotateY(90deg) translateZ(160px)",
-                        transformOrigin: "left center",
-                        top: "0",
-                        left: "250px",
-                        boxShadow: "0 0 30px rgba(255, 215, 0, 0.4)",
-                        border: "1px solid rgba(255, 215, 0, 0.3)"
-                      }}
-                    />
-
-                    {/* Left Face */}
-                    <div 
-                      style={{ 
-                        position: "absolute",
-                        width: "70px",
-                        height: "200px",
-                        background: `
-                          linear-gradient(180deg, 
-                            #C9A227 0%, 
-                            #B8941F 15%, 
-                            #A67C1A 30%,
-                            #B8941F 45%,
-                            #C9A227 60%,
-                            #B8941F 75%,
-                            #A67C1A 90%,
-                            #B8941F 100%
-                          )
-                        `,
-                        borderRadius: "8px",
-                        transform: "rotateY(-90deg) translateZ(160px)",
-                        transformOrigin: "right center",
-                        top: "0",
-                        left: "0",
-                        boxShadow: "0 0 25px rgba(184, 148, 31, 0.3)",
-                        border: "1px solid rgba(184, 148, 31, 0.3)"
-                      }}
-                    />
-
-                    {/* Highlight/Shine Effect on Front */}
-                    <div 
-                      style={{ 
-                        position: "absolute",
-                        width: "320px",
-                        height: "200px",
-                        background: `
-                          linear-gradient(135deg, 
-                            rgba(255, 255, 255, 0.5) 0%, 
-                            rgba(255, 255, 255, 0.2) 20%,
-                            transparent 40%,
-                            transparent 100%
-                          )
-                        `,
-                        borderRadius: "8px",
-                        transform: "translateZ(51px)",
-                        mixBlendMode: "overlay",
-                        pointerEvents: "none"
-                      }}
-                    />
-                  </motion.div>
+                {/* Three.js 3D Gold Ingot */}
+                <div className="relative w-full h-full aspect-square z-10">
+                  <GoldIngotCanvas />
                 </div>
               </div>
             </div>

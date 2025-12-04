@@ -1,0 +1,11 @@
+Model Information:
+* title:	Gold ingot
+* source:	https://sketchfab.com/3d-models/gold-ingot-e9cf15119c7d483c8c8a70633082f5ee
+* author:	Artyooooom (https://sketchfab.com/Artyooooom)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Gold ingot" (https://sketchfab.com/3d-models/gold-ingot-e9cf15119c7d483c8c8a70633082f5ee) by Artyooooom (https://sketchfab.com/Artyooooom) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
