@@ -35,7 +35,7 @@ export function Footer() {
               </span>
             </div>
             <p className="text-zinc-400 mb-6">
-              Нарийвчлалтай алтны шинжилгээ, чанарын баталгаажуулалтын таны найдвартай түнш. Баталгаажсан, нарийвчлалтай, найдвартай.
+Алт хайлж гулдмайлах, сорьц тогтоох шинжилгээний таны найдвартай түнш.
             </p>
             <div className="flex gap-3">
               {[Facebook, Twitter, Instagram, Linkedin].map((Icon, index) => (
@@ -56,20 +56,18 @@ export function Footer() {
             <h3 className="text-white mb-6 font-semibold">Үйлчилгээ</h3>
             <ul className="space-y-3">
               {[
-                "Алтны сорьц шинжилгээ",
-                "XRF шинжилгээ",
-                "Гоёл чимэглэлийн баталгаажуулалт",
-                "Лабораторийн баталгаажуулалт",
-                "Үнэт металлын шинжилгээ",
-                "Зөвлөх үйлчилгээ",
+                { label: "Алтны сорьцийн шинжилгээ", href: "#services" },
+                { label: "Лабораторийн баталгаажуулалт", href: "#services" },
+                { label: "Үнэт металлын сорьцийн шинжилгээ", href: "#services" },
+                { label: "Зөвлөх үйлчилгээ", href: "#services" },
               ].map((service) => (
-                <li key={service}>
+                <li key={service.label}>
                   <a
-                    href="#"
+                    href={service.href}
                     className="text-zinc-400 hover:text-[#fa9906] transition-colors flex items-center gap-2"
                   >
                     <div className="w-1 h-1 bg-[#fa9906] rounded-full" />
-                    {service}
+                    {service.label}
                   </a>
                 </li>
               ))}
@@ -84,9 +82,7 @@ export function Footer() {
                 { label: "Бидний тухай", href: "#about-us" },
                 { label: "Түгээмэл асуулт", href: "#faq" },
                 { label: "Шинжилгээний үйл явц", href: "#process" },
-                { label: "Үнэ", href: "#" },
-                { label: "Баталгаажуулалт", href: "#" },
-                { label: "Нууцлалын бодлого", href: "#" },
+                { label: "Үнэ", href: "/ҮЙЛЧИЛГЭЭНИЙ ҮНЭ ТАРИФ.pdf" },
               ].map((item) => (
                 <li key={item.label}>
                   <a
@@ -123,82 +119,38 @@ export function Footer() {
                 </div>
                 <span>assaylabmon@gmail.com</span>
               </a>
-              <div className="flex items-start gap-3 text-zinc-400">
+              <a
+                href="https://maps.app.goo.gl/YKHkwZRGEXD5dSz16"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-3 text-zinc-400 hover:text-[#fa9906] transition-colors"
+              >
                 <div className="w-10 h-10 bg-white/5 rounded-lg flex items-center justify-center flex-shrink-0">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <span>Хан-Уул дүүргийн 3-р хороо, Үйлдвэрийн баруун бүс
                 17070 82 тоот. Тайгер цогцолборын В1 давхар.</span>
-              </div>
-            </div>
-
-            {/* WhatsApp Button */}
-            <Button className="w-full bg-green-600 hover:bg-green-700 text-white border-0 rounded-xl">
-              <Phone className="w-4 h-4 mr-2" />
-              WhatsApp-аар холбогдох
-            </Button>
-          </div>
-        </div>
-
-        {/* Newsletter Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="border-t border-white/10 pt-12 mb-12"
-        >
-          <div className="max-w-2xl mx-auto text-center">
-            <h3 className="text-white mb-3 text-xl font-semibold">Мэдээлэл авах</h3>
-            <p className="text-zinc-400 mb-6">
-              Алтны зах зээлийн мэдээлэл, шинжилгээний зөвлөмж авахын тулд мэдээллийн хуудсанд бүртгүүлээрэй
-            </p>
-            <div className="flex gap-3 max-w-md mx-auto">
-              <Input
-                type="email"
-                placeholder="Имэйл хаягаа оруулах"
-                className="bg-white/5 border-white/10 text-white placeholder:text-zinc-500 rounded-xl h-12 focus:ring-[#fa9906] focus:border-[#fa9906]"
-              />
-              <Button className="bg-gradient-to-r from-[#fa9906] to-[#FFD700] hover:from-[#FFD700] hover:to-[#fa9906] text-zinc-900 border-0 rounded-xl px-6">
-                Бүртгүүлэх
-              </Button>
+              </a>
             </div>
           </div>
-        </motion.div>
-
-        {/* Certifications/Partners */}
-        <div className="border-t border-white/10 pt-12 mb-12">
-          <div className="text-center mb-6">
-            <span className="text-zinc-500">Баталгаажсан & Батлагдсан</span>
-          </div>
-          <div className="flex flex-wrap justify-center items-center gap-8">
-            {["ISO 9001:2015", "NABL Accredited", "BIS Certified", "Lab Quality Plus"].map((cert) => (
-              <div
-                key={cert}
-                className="px-6 py-3 bg-white/5 rounded-xl border border-white/10 text-zinc-400 hover:border-[#fa9906]/30 transition-colors"
-              >
-                {cert}
-              </div>
-            ))}
-          </div>
         </div>
-
         {/* Bottom Bar */}
         <div className="border-t border-white/10 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-zinc-500">
               © 2025 YMCT. Бүх эрх хуулиар хамгаалагдсан.
             </p>
-            <div className="flex gap-6 text-zinc-500">
-              <a href="#" className="hover:text-[#fa9906] transition-colors">
-                Үйлчилгээний нөхцөл
+            <p className="text-zinc-500 text-sm">
+              Хөгжүүлсэн:{" "}
+              <a
+                href="https://www.gobitech.dev/mn"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#fa9906] hover:text-[#FFD700] transition-colors"
+              >
+                Gobitech
               </a>
-              <a href="#" className="hover:text-[#fa9906] transition-colors">
-                Нууцлалын бодлого
-              </a>
-              <a href="#" className="hover:text-[#fa9906] transition-colors">
-                Cookie бодлого
-              </a>
-            </div>
+            </p>
           </div>
         </div>
       </div>

@@ -5,24 +5,24 @@ import { Star, Quote } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Сараа Митчелл",
-    role: "Гоёл чимэглэлийн дэлгүүрийн эзэн",
+    name: "Ариунзаяа Бат-Өлзий",
+    role: "Үйлчлүүлэгч",
     image: "https://images.unsplash.com/photo-1649589244330-09ca58e4fa64?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b21hbiUyMHByb2Zlc3Npb25hbCUyMHBvcnRyYWl0fGVufDF8fHx8MTc2MzMxODg4N3ww&ixlib=rb-4.1.0&q=80&w=1080",
-    content: "YMCT нь 5 жилээс дээш хугацаанд манай найдвартай түнш байсан. Тэдний XRF шинжилгээ маш нарийвчлалтай бөгөөд баталгаажсан тайлангууд манай үйлчлүүлэгчдэд бүрэн итгэл өгдөг. Маш мэргэжлийн үйлчилгээ!",
+    content: "Хэрэглэгчдийнхээ тав тухыг хангасан орчин бүрдүүлсэн танай хамт олонд талархлаа илэрхийлж байна. Зөөлөн буйдан дээр тухлан сууж телевиз үзэн, цай, кофе уунгаа үйлчилгээ авах үнэхээр СУУУУПЕЕРРРР байлаа",
     rating: 5,
   },
   {
-    name: "Михаэл Чен",
+    name: "Бат-Эрдэнэ Маналайбаатар",
     role: "Алтны худалдаачин",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzc21hbiUyMHBvcnRyYWl0fGVufDF8fHx8MTc2MzMxOTEyOXww&ixlib=rb-4.1.0&q=80&w=1080",
-    content: "Хариу өгөх хугацаа гайхалтай. Би 24 цагийн дотор нарийвчилсан тайлан авдаг нь манай бизнест маш чухал. Баг нь мэдлэгтэй, үнэ нь шударга. Бүс нутагт хамгийн сайн алтны шинжилгээний лаборатори.",
+    image: "/test-1.jpg",
+    content: "Хариу өгөх хугацаа гайхалтай. 2-4 цагийн дотор нарийвчилсан тайлан авдаг нь манай бизнест маш чухал. Та бүхэнд амжилт хүсье!",
     rating: 5,
   },
   {
-    name: "Эмч Прия Шарма",
+    name: "Э.Гантөмөр",
     role: "Судалгааны эрдэмтэн",
     image: "https://images.unsplash.com/photo-1576670158706-8d5b044b61da?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBzY2llbnRpc3QlMjB3b21hbnxlbnwxfHx8fDE3NjMzNDYwNzd8MA&ixlib=rb-4.1.0&q=80&w=1080",
-    content: "Металлургийн мэргэжилтэн болохын хувьд би тэдний нарийвчлал, орчин үеийн шинжилгээний аргад зориулсан хүчин чармайлтыг үнэлдэг. Тэдний дэвшилтэт тоног төхөөрөмж, ISO баталгаажуулалт нь тэднийг онцлох болгодог. Гайхалтай техникийн мэргэжил.",
+    content: "Металлургийн мэргэжилтэн болохын хувьд би тэдний нарийвчлал, орчин үеийн шинжилгээний аргад зориулсан хүчин чармайлтыг үнэлдэг. Тэдний дэвшилтэт тоног төхөөрөмж, ISO баталгаажуулалт нь тэднийг онцлох болгодог.",
     rating: 5,
   },
 ];
@@ -115,9 +115,9 @@ export function TestimonialsSection() {
         >
           {[
             { label: "ISO баталгаажсан", value: "9001:2015" },
-            { label: "Хийсэн шинжилгээ", value: "15,000+" },
+            { label: "Хийсэн шинжилгээ", value: ":500+" },
             { label: "Үйлчлүүлэгчийн сэтгэл ханамж", value: "99.8%" },
-            { label: "Хариу өгөх хугацаа", value: "<24ц" },
+            { label: "Хариу өгөх хугацаа", value: "<2-4 цаг" },
           ].map((stat, index) => (
             <motion.div
               key={stat.label}

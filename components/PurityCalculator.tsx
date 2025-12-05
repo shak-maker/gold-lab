@@ -1,15 +1,58 @@
 "use client";
 
 import { motion } from "motion/react";
-import { useState } from "react";
-import { Calculator, TrendingUp } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Calculator, TrendingUp, RefreshCw } from "lucide-react";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 
 export function PurityCalculator() {
   const [weight, setWeight] = useState("");
   const [karat, setKarat] = useState("24");
-  const [goldPrice] = useState(62.50); // Price per gram in USD
+  const [goldPrice, setGoldPrice] = useState(212500); // Price per gram in MNT (fallback: ~62.50 USD * 3400)
+  const [priceLoading, setPriceLoading] = useState(false);
+  const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
+
+  // Format number with Mongolian thousands separator
+  const formatMNT = (value: number) => {
+    return new Intl.NumberFormat('mn-MN', {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(value);
+  };
+
+  // Fetch real-time gold price from Next.js API route
+  useEffect(() => {
+    const fetchGoldPrice = async () => {
+      setPriceLoading(true);
+      try {
+        const response = await fetch('/api/gold-price');
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch gold price');
+        }
+        
+        const data = await response.json();
+        
+        if (data.price && typeof data.price === 'number') {
+          setGoldPrice(data.price);
+          setLastUpdated(new Date(data.timestamp || Date.now()));
+        }
+      } catch (error) {
+        console.error('Error fetching gold price:', error);
+        // Keep the fallback price if API fails
+      } finally {
+        setPriceLoading(false);
+      }
+    };
+
+    fetchGoldPrice();
+    
+    // Refresh price every 5 minutes
+    const interval = setInterval(fetchGoldPrice, 5 * 60 * 1000);
+    
+    return () => clearInterval(interval);
+  }, []);
 
   const karatPurity: Record<string, number> = {
     "24": 99.9,
@@ -46,10 +89,10 @@ export function PurityCalculator() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-[#fa9906] mb-4 block tracking-wide">АЛТНЫ ҮНЭ ЦЭНИЙ ТООЦООЛУУР</span>
-          <h2 className="text-white mb-4 text-4xl font-bold">Алтны үнэ цэнийг тооцоолох</h2>
+          <span className="text-[#fa9906] mb-4 block tracking-wide">АЛТНЫ ҮНЭ ТООЦООЛУУР</span>
+          <h2 className="text-white mb-4 text-4xl font-bold">Алтны үнэ тооцоолох</h2>
           <p className="text-zinc-400 max-w-2xl mx-auto">
-            Одоогийн зах зээлийн үнэ дээр үндэслэн алтны үнэ цэнийг шууд тооцоолох
+            Одоогийн зах зээлийн үнэ дээр үндэслэн алтны үнийг шууд тооцоолох
           </p>
         </motion.div>
 
@@ -66,7 +109,7 @@ export function PurityCalculator() {
                 <div className="w-12 h-12 bg-gradient-to-br from-[#fa9906] to-[#FFD700] rounded-xl flex items-center justify-center">
                   <Calculator className="w-6 h-6 text-zinc-900" />
                 </div>
-                <h3 className="text-zinc-900 text-xl font-semibold">Алтны сорьц тооцоолуур</h3>
+                <h3 className="text-zinc-900 text-xl font-semibold">Алтны үнэ тооцоолуур (дэлхийн зах зээлийн үнээр)</h3>
               </div>
 
               <div className="space-y-6">
@@ -110,13 +153,24 @@ export function PurityCalculator() {
 
                 {/* Current Gold Price Info */}
                 <div className="p-4 bg-zinc-50 rounded-xl border border-zinc-200">
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between mb-2">
                     <span className="text-zinc-600">Одоогийн алтны үнэ:</span>
                     <div className="flex items-center gap-2">
-                      <TrendingUp className="w-4 h-4 text-green-600" />
-                      <span className="text-zinc-900 font-semibold">${goldPrice}/грамм</span>
+                      {priceLoading ? (
+                        <RefreshCw className="w-4 h-4 text-zinc-400 animate-spin" />
+                      ) : (
+                        <TrendingUp className="w-4 h-4 text-green-600" />
+                      )}
+                      <span className="text-zinc-900 font-semibold">
+                        {priceLoading ? '...' : `${formatMNT(goldPrice)}$`}/грамм
+                      </span>
                     </div>
                   </div>
+                  {lastUpdated && (
+                    <p className="text-xs text-zinc-500">
+                      Сүүлд шинэчлэгдсэн: {lastUpdated.toLocaleTimeString('mn-MN')}
+                    </p>
+                  )}
                 </div>
 
                 {/* Result */}
@@ -129,17 +183,13 @@ export function PurityCalculator() {
                       animate={{ scale: 1, opacity: 1 }}
                       className="text-[#fa9906] text-4xl font-bold"
                     >
-                      ${value.toFixed(2)}
+                      {formatMNT(value)}₮
                     </motion.div>
                     <p className="text-zinc-500 mt-2 text-sm">
-                      *Зөвхөн тооцоолол. Нарийвчлалтай үнэлгээний хувьд баталгаажсан шинжилгээ хийлгэнэ үү.
+                      *Source: https://metalslive.com/
                     </p>
                   </div>
                 </div>
-
-                <button className="w-full py-4 bg-gradient-to-r from-[#fa9906] to-[#FFD700] hover:from-[#FFD700] hover:to-[#fa9906] text-zinc-900 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl font-semibold">
-                  Мэргэжлийн шинжилгээ захиалах
-                </button>
               </div>
             </div>
           </motion.div>
@@ -189,7 +239,7 @@ export function PurityCalculator() {
             <div className="p-6 bg-[#fa9906]/10 backdrop-blur-sm rounded-2xl border border-[#fa9906]/30">
               <p className="text-zinc-300">
                 💡 <strong className="text-white">Мэргэжлийн зөвлөмж:</strong> Алтны сорьцыг мэргэжлийн 
-                лабораторийн шинжилгээгээр байнга баталгаажуулна уу. Манай XRF технологи нь таны 
+                лабораторийн шинжилгээгээр байнга баталгаажуулна уу. Манай технологи нь таны 
                 бүтээгдэхүүнийг гэмтээхгүйгээр нарийвчлалтай үр дүнг өгдөг.
               </p>
             </div>

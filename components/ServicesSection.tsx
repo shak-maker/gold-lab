@@ -13,7 +13,7 @@ const services = [
   {
     icon: ScanLine,
     title: "Мөнгөн гулдмайд шинжилгээ хийх",
-    description: "Элемент бүрдлийг нарийвчлалтай тогтоох X-ray fluorescence ашиглан гэмтээхгүй дэвшилтэт шинжилгээ.",
+    description: "Мөнгөн гулдмайн сорьц, цэвэршилт болон найрлагыг нарийвчлалтай тогтоож, бодит үнэлгээг баталгаажуулсан шинжилгээ.",
     features: ["Гэмтээхгүй", "Олон элемент", "Шууд үр дүн"],
   },
   {
@@ -106,12 +106,12 @@ export function ServicesSection() {
           transition={{ delay: 0.4 }}
           className="mt-16 p-8 bg-gradient-to-r from-zinc-900 to-zinc-800 rounded-3xl text-center"
         >
-          <h3 className="text-white mb-3 text-2xl font-semibold">Тусгай шийдэл хэрэгтэй юу?</h3>
+          <h3 className="text-white mb-3 text-2xl font-semibold">Урьдчилсан захиалгат үйлчилгээний цаг захиалах</h3>
           <p className="text-zinc-300 mb-6 max-w-2xl mx-auto">
-            Бид гоёл чимэглэлийн дэлгүүр, худалдаачин, байгууллагуудад зориулсан тусгай шинжилгээний багц үйлчилгээ санал болгодог
+            Манай байгууллагын VIP үйлчлүүлэгч болсноор урьдчилсан захиалгат үйлчилгээний цаг захиалах боломжтой.
           </p>
           <button className="px-8 py-3 bg-white text-zinc-900 rounded-xl hover:bg-zinc-100 transition-colors">
-            Бидний багтай холбогдох
+            VIP үйлчлүүлэгч болох
           </button>
         </motion.div>
       </div>

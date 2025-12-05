@@ -64,7 +64,7 @@ export function HeroSection() {
               className="inline-block mb-6"
             >
               <span className="px-4 py-2 bg-[#fa9906]/10 border border-[#fa9906]/30 rounded-full text-[#fa9906] backdrop-blur-sm">
-              MNS ISO/IEC 17025:2018 
+              MNS ISO/IEC 17025:2018 стандартаар итгэмжлэгдсэн
               </span>
             </motion.div>
 
@@ -80,15 +80,29 @@ export function HeroSection() {
               <Button
                 size="lg"
                 className="bg-gradient-to-r from-[#fa9906] to-[#FFD700] hover:from-[#FFD700] hover:to-[#fa9906] text-zinc-900 border-0 rounded-xl px-8 shadow-lg shadow-[#fa9906]/20"
+                asChild
               >
-                Үнэ Тариф
+                <a
+                  href="/ҮЙЛЧИЛГЭЭНИЙ ҮНЭ ТАРИФ.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Үнэ Тариф
+                </a>
               </Button>
               <Button
                 size="lg"
                 variant="outline"
                 className="border-[#fa9906]/50 text-[#fa9906] hover:bg-[#fa9906]/10 rounded-xl px-8"
+                asChild
               >
-                Байршил
+                <a
+                  href="https://maps.app.goo.gl/YKHkwZRGEXD5dSz16"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Байршил
+                </a>
               </Button>
             </div>
 
@@ -102,13 +116,13 @@ export function HeroSection() {
               </div>
               <div>
                 <div className="text-[#fa9906] mb-1 text-2xl font-bold">
-                  24ц
+                  2-4 цагт
                 </div>
                 <div className="text-zinc-500">Хурдан үр дүн</div>
               </div>
               <div>
                 <div className="text-[#fa9906] mb-1 text-2xl font-bold">
-                  15K+
+                  500+
                 </div>
                 <div className="text-zinc-500">Хийсэн шинжилгээ</div>
               </div>

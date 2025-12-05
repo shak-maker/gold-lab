@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import Image from "next/image";
 import { Award, Clock, Users, Heart } from "lucide-react";
 
 const features = [
@@ -12,7 +13,7 @@ const features = [
   {
     icon: Clock,
     title: "Хурдан үр дүн",
-    description: "Ажлын цаг эрт эхэлдэг бөгөөд сорилтын дүн тухайн өдрөө гаргана.",
+    description: "Ажлын цаг эрт эхэлдэг тул сорилтын дүнг тухайн өдрөө гаргана.",
   },
   {
     icon: Users,
@@ -39,11 +40,12 @@ export function WhyChooseUs() {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <div className="relative rounded-3xl overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1759866042499-d0b3e9d87ceb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBsYWJvcmF0b3J5JTIwdGVjaG5vbG9neXxlbnwxfHx8fDE3NjMzNDYwNzd8MA&ixlib=rb-4.1.0&q=80&w=1080"
+            <div className="relative rounded-3xl overflow-hidden h-[600px]">
+              <Image
+                src="/why-us.png"
                 alt="Modern laboratory technology"
-                className="w-full h-[600px] object-cover"
+                fill
+                className="object-cover"
               />
               {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/60 to-transparent" />
@@ -87,12 +89,9 @@ export function WhyChooseUs() {
           >
             <span className="text-[#fa9906] mb-4 block tracking-wide">ЯАГААД БИДНИЙГ СОНГОХ ВЭ</span>
             <h2 className="text-zinc-900 mb-6 text-4xl font-bold">
-              Алтны чанарын шинжилгээний мэргэжилтнүүдэд итгэ
             </h2>
             <p className="text-zinc-600 mb-8 text-lg">
-              Арван жилийн туршлага болон дэвшилтэт технологитойгоор бид алтны сорьц шинжилгээнд 
-              харьцуулшгүй нарийвчлал, найдвартай байдлыг хангадаг. Манай баталгаажсан лаборатори 
-              олон улсын стандартыг дагаж таны бүрэн итгэлийг хангадаг.
+              Арваас дээш жилийн туршлагатай мэргэжлийн боловсон хүчний баг, дэвшилтэт технологи бүхий үйлчлүүлэгчдийнхээ тав тухыг хангасан орчинд алт хайлж гулдмайлах, сорьц тогтоох шинжилгээг найдвартай, түргэн шуурхай гүйцэтгэж байна. 
             </p>
 
             <div className="space-y-6">
@@ -126,14 +125,6 @@ export function WhyChooseUs() {
               transition={{ delay: 0.6 }}
               className="mt-10 pt-8 border-t border-zinc-200"
             >
-              <div className="flex items-center gap-4">
-                <button className="px-8 py-3 bg-gradient-to-r from-[#fa9906] to-[#FFD700] hover:from-[#FFD700] hover:to-[#fa9906] text-zinc-900 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl font-semibold">
-                  Шинжилгээ захиалах
-                </button>
-                <button className="px-8 py-3 text-zinc-700 hover:text-[#fa9906] transition-colors font-semibold">
-                  Дэлгэрэнгүй мэдээлэл →
-                </button>
-              </div>
             </motion.div>
           </motion.div>
         </div>

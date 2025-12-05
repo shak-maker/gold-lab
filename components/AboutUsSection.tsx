@@ -1,53 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { Building2, Target, Users, Award, Shield, Heart } from "lucide-react";
-
-const values = [
-  {
-    icon: Shield,
-    title: "Шударга байдал эхлэл",
-    description: "Бид хийж буй бүх шинжилгээнд хамгийн өндөр ёс зүйн стандартыг баримталж, бүрэн ил тод байдал, шударга байдлыг хангадаг.",
-  },
-  {
-    icon: Target,
-    title: "Нарийвчлалын гайхамшиг",
-    description: "Нарийвчлалд зориулсан бидний хүчин чармайлт нь зөвхөн хамгийн дэвшилтэт шинжилгээний тоног төхөөрөмж, аргачлалуудыг ашиглахад хүргэдэг.",
-  },
-  {
-    icon: Heart,
-    title: "Үйлчлүүлэгчид төвлөрсөн",
-    description: "Таны итгэл бидний тэргүүн зорилго. Бид шинжилгээний бүх үйл явцад хувийн үйлчилгээ, тодорхой харилцааг хангадаг.",
-  },
-  {
-    icon: Award,
-    title: "Тасралтгүй шинэчлэл",
-    description: "Бид шинжилгээний технологийн урд эгнээнд байрлаж, арга барил, тоног төхөөрөмжөө байнга шинэчилж байдаг.",
-  },
-];
-
-const milestones = [
-  {
-    year: "2014",
-    title: "Үүсгэн байгуулалт",
-    description: "YMCT нь нарийвчлалтай, хүртээмжтэй алтны шинжилгээний үйлчилгээ үзүүлэх зорилгоор байгуулагдсан.",
-  },
-  {
-    year: "2017",
-    title: "ISO баталгаажуулалт",
-    description: "ISO 9001:2015 баталгаажуулалтыг хүлээн авч, чанарын удирдлагад зориулсан бидний хүчин чармайлтыг харуулсан.",
-  },
-  {
-    year: "2020",
-    title: "Технологийн шинэчлэл",
-    description: "Дэвшилтэт XRF спектрометрт хөрөнгө оруулж, шинжилгээний чадавхаа өргөжүүлсэн.",
-  },
-  {
-    year: "2024",
-    title: "15,000+ Шинжилгээ",
-    description: "15,000 гаруй амжилттай шинжилгээний түвшинд хүрч, бүс нутаг даяарх үйлчлүүлэгчдэд үйлчилж байна.",
-  },
-];
+import { Building2, Target, Users } from "lucide-react";
 
 export function AboutUsSection() {
   return (
@@ -87,7 +41,7 @@ MNS ISO/IEC 17025:2018 “Сорилтын болон шалгалт тохир�
           >
             <div className="relative rounded-3xl overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsYWJvcmF0b3J5JTIwc2NpZW50aXN0JTIwd29ya2luZ3xlbnwxfHx8fDE3NjMzNDYwNzd8MA&ixlib=rb-4.1.0&q=80&w=1080"
+                src="/lobby.jpg"
                 alt="Laboratory scientist working"
                 className="w-full h-[500px] object-cover"
               />
@@ -124,7 +78,7 @@ MNS ISO/IEC 17025:2018 “Сорилтын болон шалгалт тохир�
                 <div className="text-zinc-600">Жилийн туршлага</div>
               </div>
               <div>
-                <div className="text-[#fa9906] text-3xl font-bold">15K+</div>
+                <div className="text-[#fa9906] text-3xl font-bold">500+</div>
                 <div className="text-zinc-600">Хийсэн шинжилгээ</div>
               </div>
               <div>
@@ -175,89 +129,6 @@ MNS ISO/IEC 17025:2018 “Сорилтын болон шалгалт тохир�
             </p>
           </motion.div>
         </div>
-
-        {/* Values */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-24"
-        >
-          <div className="text-center mb-12">
-            <span className="text-[#fa9906] mb-4 block tracking-wide">БИДНИЙ ҮНЭТ ЗҮЙЛС</span>
-            <h3 className="text-3xl font-bold text-zinc-900">Биднийг урагш түлхэж буй зүйл</h3>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {values.map((value, index) => {
-              const Icon = value.icon;
-              return (
-                <motion.div
-                  key={value.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 border border-zinc-100 group"
-                >
-                  <div className="w-14 h-14 bg-gradient-to-br from-[#fa9906]/10 to-[#FFD700]/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <Icon className="w-7 h-7 text-[#fa9906]" />
-                  </div>
-                  <h4 className="text-zinc-900 font-semibold mb-2">{value.title}</h4>
-                  <p className="text-zinc-600 text-sm">{value.description}</p>
-                </motion.div>
-              );
-            })}
-          </div>
-        </motion.div>
-
-        {/* Timeline */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="text-center mb-12">
-            <span className="text-[#fa9906] mb-4 block tracking-wide">БИДНИЙ АЯЛАЛ</span>
-            <h3 className="text-3xl font-bold text-zinc-900">Түүхэн үе шат & Амжилтууд</h3>
-          </div>
-          <div className="relative">
-            {/* Timeline Line */}
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#fa9906]/30 via-[#FFD700]/30 to-[#fa9906]/30 transform -translate-x-1/2" />
-            
-            <div className="space-y-12">
-              {milestones.map((milestone, index) => (
-                <motion.div
-                  key={milestone.year}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className={`flex flex-col md:flex-row items-center gap-8 ${
-                    index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                  }`}
-                >
-                  {/* Year Badge */}
-                  <div className="flex-shrink-0 w-32 text-center md:text-left">
-                    <div className="inline-block px-6 py-3 bg-gradient-to-r from-[#fa9906] to-[#FFD700] text-zinc-900 rounded-xl font-bold text-lg shadow-lg">
-                      {milestone.year}
-                    </div>
-                  </div>
-
-                  {/* Content Card */}
-                  <div className="flex-1 bg-white rounded-2xl p-6 shadow-lg border border-zinc-100 md:max-w-md">
-                    <h4 className="text-zinc-900 font-bold text-xl mb-2">{milestone.title}</h4>
-                    <p className="text-zinc-600">{milestone.description}</p>
-                  </div>
-
-                  {/* Spacer for alternating layout */}
-                  <div className="hidden md:block flex-shrink-0 w-32" />
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
