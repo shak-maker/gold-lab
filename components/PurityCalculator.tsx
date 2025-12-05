@@ -9,15 +9,17 @@ import { Label } from "./ui/label";
 export function PurityCalculator() {
   const [weight, setWeight] = useState("");
   const [karat, setKarat] = useState("24");
-  const [goldPrice, setGoldPrice] = useState(212500); // Price per gram in MNT (fallback: ~62.50 USD * 3400)
+  const [goldPrice, setGoldPrice] = useState(62.50); // Price per gram in USD (fallback)
   const [priceLoading, setPriceLoading] = useState(false);
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
 
-  // Format number with Mongolian thousands separator
-  const formatMNT = (value: number) => {
-    return new Intl.NumberFormat('mn-MN', {
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
+  // Format number with USD currency
+  const formatUSD = (value: number) => {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
     }).format(value);
   };
 
@@ -162,7 +164,7 @@ export function PurityCalculator() {
                         <TrendingUp className="w-4 h-4 text-green-600" />
                       )}
                       <span className="text-zinc-900 font-semibold">
-                        {priceLoading ? '...' : `${formatMNT(goldPrice)}$`}/грамм
+                        {priceLoading ? '...' : formatUSD(goldPrice)}/грамм
                       </span>
                     </div>
                   </div>
@@ -183,7 +185,7 @@ export function PurityCalculator() {
                       animate={{ scale: 1, opacity: 1 }}
                       className="text-[#fa9906] text-4xl font-bold"
                     >
-                      {formatMNT(value)}₮
+                      {formatUSD(value)}
                     </motion.div>
                     <p className="text-zinc-500 mt-2 text-sm">
                       *Source: https://metalslive.com/
