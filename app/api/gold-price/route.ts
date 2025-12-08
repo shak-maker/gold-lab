@@ -54,7 +54,6 @@ export async function GET() {
       currency: 'USD',
       timestamp: new Date().toISOString(),
     });
-
   } catch (error) {
     console.error('Error fetching gold price:', error);
     // Fallback with default MNT price
