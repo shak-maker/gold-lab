@@ -7,7 +7,11 @@ import dynamic from "next/dynamic";
 
 const GoldIngotCanvas = dynamic(() => import("./GoldIngotCanvas"), {
   ssr: false,
-  loading: () => null,
+  loading: () => (
+    <div className="w-full h-full flex items-center justify-center">
+      <div className="w-32 h-32 border-4 border-[#fa9906]/30 border-t-[#fa9906] rounded-full animate-spin" />
+    </div>
+  ),
 });
 
 export function HeroSection() {
@@ -73,7 +77,7 @@ export function HeroSection() {
             </h1>
 
             <p className="text-zinc-400 mb-8 max-w-xl text-md">
-            Олон улсын MNS ISO/IEC 17025:2018 стандартаар итгэмжлэгдсэн үнэт металлын сорьц тогтоох, хайлах лаборатори. Бид найдвартай, хурдан шуурхай үйлчилгээг санал болгож байна.
+            Олон улсын MNS ISO/IEC 17025:2018 стандартаар итгэмжлэгдсэн үнэт металл хайлах, сорьц тогтоох  лаборатори. Бид найдвартай, хурдан шуурхай үйлчилгээг санал болгож байна.
             </p>
 
             <div className="flex flex-wrap gap-4">
@@ -170,7 +174,7 @@ export function HeroSection() {
                 />
 
                 {/* Three.js 3D Gold Ingot */}
-                <div className="relative w-full h-full aspect-square z-10">
+                <div className="relative w-full h-full min-h-[400px] aspect-square z-10">
                   <GoldIngotCanvas />
                 </div>
               </div>

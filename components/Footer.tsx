@@ -38,14 +38,14 @@ export function Footer() {
 Алт хайлж гулдмайлах, сорьц тогтоох шинжилгээний таны найдвартай түнш.
             </p>
             <div className="flex gap-3">
-              {[Facebook, Twitter, Instagram, Linkedin].map((Icon, index) => (
+              {[Facebook].map((Icon, index) => (
                 <motion.a
                   key={index}
                   href="#"
                   whileHover={{ scale: 1.1, y: -2 }}
                   className="w-10 h-10 bg-white/5 hover:bg-[#fa9906]/20 rounded-lg flex items-center justify-center border border-white/10 hover:border-[#fa9906]/30 transition-all duration-300"
                 >
-                  <Icon className="w-5 h-5 text-zinc-400 hover:text-[#fa9906]" />
+                  <Icon className="w-7 h-7 text-zinc-400 hover:text-[#fa9906]" />
                 </motion.a>
               ))}
             </div>
