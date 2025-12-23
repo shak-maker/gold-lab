@@ -2,8 +2,20 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "GoldTest Lab - Precision Gold Testing You Can Trust",
-  description: "Certified gold testing laboratory providing accurate purity analysis using advanced XRF spectrometry and chemical testing. Get professional reports within 24 hours.",
+  title: "ҮМСТ",
+  description: "Үнэт металлын сорьц тогтоох лаборатори",
+  icons: {
+    icon: "/logo main.png",
+    apple: "/logo main.png",
+    shortcut: "/logo main.png",
+  },
+  openGraph: {
+    images: ["/logo main.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/logo main.png"],
+  },
 };
 
 export default function RootLayout({

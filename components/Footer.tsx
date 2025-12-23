@@ -41,7 +41,9 @@ export function Footer() {
               {[Facebook].map((Icon, index) => (
                 <motion.a
                   key={index}
-                  href="#"
+                  href="https://www.facebook.com/share/1AQ1MoUuaM/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, y: -2 }}
                   className="w-10 h-10 bg-white/5 hover:bg-[#fa9906]/20 rounded-lg flex items-center justify-center border border-white/10 hover:border-[#fa9906]/30 transition-all duration-300"
                 >
