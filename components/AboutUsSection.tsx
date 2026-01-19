@@ -41,7 +41,7 @@ MNS ISO/IEC 17025:2018 “Сорилтын болон шалгалт тохир�
           >
             <div className="relative rounded-3xl overflow-hidden">
               <img
-                src="/lobby.jpg"
+                src="/why-us.jpg"
                 alt="Laboratory scientist working"
                 className="w-full h-[500px] object-cover"
               />

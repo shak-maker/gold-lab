@@ -27,9 +27,7 @@ export function HeroSection() {
       delay: Math.random() * 2,
     }));
     setParticles(newParticles);
-    import("@react-three/drei").then((drei) => {
-      drei.useGLTF.preload("/models/scene.gltf");
-    });
+    // Model preloading is handled in GoldIngotCanvas.tsx to avoid duplication
   }, []);
 
   return (

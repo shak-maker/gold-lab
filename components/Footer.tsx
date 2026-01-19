@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
+import Image from "next/image";
 
 export function Footer() {
   return (
@@ -142,15 +143,21 @@ export function Footer() {
             <p className="text-zinc-500">
               © 2025 YMCT. Бүх эрх хуулиар хамгаалагдсан.
             </p>
-            <p className="text-zinc-500 text-sm">
+            <p className="text-zinc-500 text-sm flex items-center gap-2">
               Хөгжүүлсэн:{" "}
               <a
                 href="https://www.gobitech.dev/mn"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#fa9906] hover:text-[#FFD700] transition-colors"
+                className="inline-block hover:opacity-80 transition-opacity"
               >
-                Gobitech
+                <Image
+                  src="/Logo Gobitech 1080p (1).png"
+                  alt="Gobitech"
+                  width={120}
+                  height={40}
+                  className="h-8 w-auto"
+                />
               </a>
             </p>
           </div>

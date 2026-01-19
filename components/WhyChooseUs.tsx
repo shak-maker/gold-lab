@@ -42,7 +42,7 @@ export function WhyChooseUs() {
           >
             <div className="relative rounded-3xl overflow-hidden h-[600px]">
               <Image
-                src="/why-us.png"
+                src="/lobby.jpg"
                 alt="Modern laboratory technology"
                 fill
                 className="object-cover"
