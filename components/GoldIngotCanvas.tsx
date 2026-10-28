@@ -1,19 +1,24 @@
 "use client";
 
-import React, { Suspense, useRef } from "react";
+import React, { Suspense, useEffect, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useGLTF, Center, Bounds, Environment } from "@react-three/drei";
+import { useGLTF, useEnvironment, Center, Bounds, Environment } from "@react-three/drei";
 import * as THREE from "three";
 
-// Preload the model immediately when module loads (client-side only)
+const MODEL_URL = "/models/scene.gltf";
+// Self-hosted copy of drei's "sunset" preset (drei loads presets from raw.githack.com)
+const ENVIRONMENT_URL = "/models/venice_sunset_1k.hdr";
+
+// Preload the model and reflections immediately when module loads (client-side only)
 if (typeof window !== "undefined") {
-  useGLTF.preload("/models/scene.gltf");
+  useGLTF.preload(MODEL_URL);
+  useEnvironment.preload({ files: ENVIRONMENT_URL });
 }
 
 // Gold ingot model component
 function GoldIngot() {
   const modelRef = useRef<THREE.Group>(null);
-  const { scene } = useGLTF("/models/scene.gltf");
+  const { scene } = useGLTF(MODEL_URL);
   
   // Fix materials to ensure they render properly with textures
   React.useEffect(() => {
@@ -126,73 +131,89 @@ function GoldIngot() {
   );
 }
 
-export default function GoldIngotCanvas() {
+interface GoldIngotCanvasProps {
+  // False while the intro loader covers the page: render only on demand, so shaders
+  // compile and textures upload behind the loader without competing with it every frame
+  active?: boolean;
+}
+
+export default function GoldIngotCanvas({ active = true }: GoldIngotCanvasProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(true);
+
+  // Stop the render loop while the hero is scrolled out of view
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting));
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <Canvas
-      camera={{ position: [0, 0, 5], fov: 50 }}
-      gl={{ 
-        antialias: true, 
-        alpha: true,
-        powerPreference: "high-performance",
-        toneMapping: THREE.ACESFilmicToneMapping,
-        toneMappingExposure: 1.4
-      }}
-      style={{ 
-        background: "transparent",
-        width: "100%",
-        height: "100%",
-        display: "block"
-      }}
-      dpr={[1, 2]} // Optimize pixel ratio
-      frameloop="always"
-      onCreated={({ gl }) => {
-        gl.outputColorSpace = THREE.SRGBColorSpace;
-      }}
-      onError={(error) => {
-        console.error("Canvas error:", error);
-      }}
-    >
-      {/* Natural lighting setup for realistic gold rendering */}
-      <ambientLight intensity={1.2} />
-      {/* Warm hemisphere light for natural gold appearance */}
-      <hemisphereLight intensity={1.0} color="#fff8e1" groundColor="#3d2f1f" />
-      
-      {/* Main key light - warm and bright */}
-      <directionalLight 
-        position={[5, 8, 5]} 
-        intensity={2.5} 
-        color="#fff8e1"
-        castShadow 
-      />
-      {/* Fill light - softer */}
-      <directionalLight 
-        position={[-4, 6, -4]} 
-        intensity={1.2} 
-        color="#fff8e1"
-      />
-      {/* Rim light for edge definition */}
-      <directionalLight 
-        position={[0, 2, -8]} 
-        intensity={1.0} 
-        color="#fff8e1"
-      />
-      
-      {/* Warm accent lights to enhance gold color */}
-      <pointLight position={[2, 4, 2]} intensity={1.5} color="#ffd54f" />
-      <pointLight position={[-2, 4, -2]} intensity={1.2} color="#ffb300" />
-      
-      {/* Environment for realistic reflections - wrapped in Suspense for safety */}
-      <Suspense fallback={null}>
-        <Environment 
-          preset="sunset" 
-          background={false}
-          environmentIntensity={1.0}
+    <div ref={containerRef} className="w-full h-full">
+      <Canvas
+        camera={{ position: [0, 0, 5], fov: 50 }}
+        gl={{ 
+          antialias: true, 
+          alpha: true,
+          powerPreference: "high-performance",
+          toneMapping: THREE.ACESFilmicToneMapping,
+          toneMappingExposure: 1.4
+        }}
+        style={{ 
+          background: "transparent",
+          width: "100%",
+          height: "100%",
+          display: "block"
+        }}
+        dpr={[1, 1.5]} // Cap pixel ratio; the extra cost of 2x+ isn't visible at this size
+        frameloop={active && inView ? "always" : "demand"}
+        onCreated={({ gl }) => {
+          gl.outputColorSpace = THREE.SRGBColorSpace;
+        }}
+        onError={(error) => {
+          console.error("Canvas error:", error);
+        }}
+      >
+        {/* Lighting for realistic gold. No ambient/hemisphere light: the material is almost
+            fully metallic, so those only add diffuse light it doesn't show */}
+        {/* Main key light - warm and bright */}
+        <directionalLight 
+          position={[5, 8, 5]} 
+          intensity={2.5} 
+          color="#fff8e1"
         />
-      </Suspense>
+        {/* Fill light - softer */}
+        <directionalLight 
+          position={[-4, 6, -4]} 
+          intensity={1.2} 
+          color="#fff8e1"
+        />
+        {/* Rim light for edge definition */}
+        <directionalLight 
+          position={[0, 2, -8]} 
+          intensity={1.0} 
+          color="#fff8e1"
+        />
       
-      <Suspense fallback={null}>
-        <GoldIngot />
-      </Suspense>
-    </Canvas>
+        {/* Warm accent lights to enhance gold color */}
+        <pointLight position={[2, 4, 2]} intensity={1.5} color="#ffd54f" />
+        <pointLight position={[-2, 4, -2]} intensity={1.2} color="#ffb300" />
+      
+        {/* Environment for realistic reflections - wrapped in Suspense for safety */}
+        <Suspense fallback={null}>
+          <Environment 
+            files={ENVIRONMENT_URL}
+            background={false}
+            environmentIntensity={1.0}
+          />
+        </Suspense>
+      
+        <Suspense fallback={null}>
+          <GoldIngot />
+        </Suspense>
+      </Canvas>
+    </div>
   );
 }

@@ -20,7 +20,7 @@ const GoldIngotCanvas = dynamic(() => import("./GoldIngotCanvas"), {
 });
 
 export function HeroSection() {
-  // Hold entrance animations and 3D rendering until the intro loader fades out
+  // Hold entrance animations and continuous 3D rendering until the intro loader fades out
   const introDone = useIntroDone();
   const [particles, setParticles] = useState<
     Array<{ id: number; x: number; y: number; delay: number }>
@@ -34,8 +34,6 @@ export function HeroSection() {
       delay: Math.random() * 2,
     }));
     setParticles(newParticles);
-    // Fetch the 3D chunk (which also preloads the model) while the loader is showing
-    import("./GoldIngotCanvas");
   }, []);
 
   return (
@@ -181,7 +179,7 @@ export function HeroSection() {
 
                 {/* Three.js 3D Gold Ingot */}
                 <div className="relative w-full h-full min-h-[400px] aspect-square z-10">
-                  {introDone ? <GoldIngotCanvas /> : <CanvasPlaceholder />}
+                  <GoldIngotCanvas active={introDone} />
                 </div>
               </div>
             </div>
