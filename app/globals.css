@@ -79,3 +79,12 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+
+/* Intro loader (components/LoadingAnimation.tsx, lib/intro.ts) */
+html[data-intro-seen] .intro-loader {
+  display: none;
+}
+
+html.intro-lock {
+  overflow: hidden;
+}

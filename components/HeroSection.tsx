@@ -4,17 +4,24 @@ import { motion } from "motion/react";
 import { Button } from "./ui/button";
 import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
+import { useIntroDone } from "./LoadingAnimation";
 
-const GoldIngotCanvas = dynamic(() => import("./GoldIngotCanvas"), {
-  ssr: false,
-  loading: () => (
+function CanvasPlaceholder() {
+  return (
     <div className="w-full h-full flex items-center justify-center">
       <div className="w-32 h-32 border-4 border-[#fa9906]/30 border-t-[#fa9906] rounded-full animate-spin" />
     </div>
-  ),
+  );
+}
+
+const GoldIngotCanvas = dynamic(() => import("./GoldIngotCanvas"), {
+  ssr: false,
+  loading: CanvasPlaceholder,
 });
 
 export function HeroSection() {
+  // Hold entrance animations and 3D rendering until the intro loader fades out
+  const introDone = useIntroDone();
   const [particles, setParticles] = useState<
     Array<{ id: number; x: number; y: number; delay: number }>
   >([]);
@@ -27,7 +34,8 @@ export function HeroSection() {
       delay: Math.random() * 2,
     }));
     setParticles(newParticles);
-    // Model preloading is handled in GoldIngotCanvas.tsx to avoid duplication
+    // Fetch the 3D chunk (which also preloads the model) while the loader is showing
+    import("./GoldIngotCanvas");
   }, []);
 
   return (
@@ -56,12 +64,12 @@ export function HeroSection() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={introDone ? { opacity: 1, y: 0 } : undefined}
             transition={{ duration: 0.8 }}
           >
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              animate={introDone ? { opacity: 1 } : undefined}
               transition={{ delay: 0.3 }}
               className="inline-block mb-6"
             >
@@ -134,7 +142,7 @@ export function HeroSection() {
           {/* 3D Gold Ingot Visual */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
+            animate={introDone ? { opacity: 1, scale: 1 } : undefined}
             transition={{ duration: 1, delay: 0.4 }}
             className="relative"
           >
@@ -173,7 +181,7 @@ export function HeroSection() {
 
                 {/* Three.js 3D Gold Ingot */}
                 <div className="relative w-full h-full min-h-[400px] aspect-square z-10">
-                  <GoldIngotCanvas />
+                  {introDone ? <GoldIngotCanvas /> : <CanvasPlaceholder />}
                 </div>
               </div>
             </div>

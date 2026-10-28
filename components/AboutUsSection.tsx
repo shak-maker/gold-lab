@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "motion/react";
 import { Building2, Target, Users } from "lucide-react";
 
@@ -39,11 +40,13 @@ MNS ISO/IEC 17025:2018 “Сорилтын болон шалгалт тохир�
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <div className="relative rounded-3xl overflow-hidden">
-              <img
-                src="/why-us.jpg"
+            <div className="relative rounded-3xl overflow-hidden h-[500px]">
+              <Image
+                src="/why-us.webp"
                 alt="Laboratory scientist working"
-                className="w-full h-[500px] object-cover"
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/40 to-transparent" />
             </div>

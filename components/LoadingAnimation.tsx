@@ -1,10 +1,40 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence, useMotionValue, useSpring } from "motion/react";
+import { useState, useEffect, useSyncExternalStore } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { INTRO_LOADER_CLASS, INTRO_SEEN_ATTR, INTRO_STORAGE_KEY } from "@/lib/intro";
 
-interface LoadingAnimationProps {
-  onComplete?: () => void;
+// Whether the intro loader has finished in this document. Seeded from the attribute the
+// inline head script sets on repeat visits, so remounts in the same tab skip the loader too.
+let introDone: boolean | null = null;
+const listeners = new Set<() => void>();
+
+function getIntroDone(): boolean {
+  if (introDone === null) {
+    introDone = document.documentElement.hasAttribute(INTRO_SEEN_ATTR);
+  }
+  return introDone;
+}
+
+function finishIntro() {
+  introDone = true;
+  // sessionStorage throws when storage is blocked (privacy modes, disabled site data)
+  try {
+    sessionStorage.setItem(INTRO_STORAGE_KEY, "true");
+  } catch {}
+  listeners.forEach((listener) => listener());
+}
+
+function subscribe(listener: () => void) {
+  listeners.add(listener);
+  return () => {
+    listeners.delete(listener);
+  };
+}
+
+// True once the loader has started fading out (and on repeat visits). False during SSR.
+export function useIntroDone(): boolean {
+  return useSyncExternalStore(subscribe, getIntroDone, () => false);
 }
 
 // Easing function for smooth animation
@@ -12,66 +42,68 @@ function easeOutCubic(t: number): number {
   return 1 - Math.pow(1 - t, 3);
 }
 
-export function LoadingAnimation({ onComplete }: LoadingAnimationProps) {
+export function LoadingAnimation() {
   const [progress, setProgress] = useState(0);
-  const [isVisible, setIsVisible] = useState(true);
-  const springProgress = useMotionValue(0);
-  const smoothProgress = useSpring(springProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.01,
-  });
+  const isDone = useIntroDone();
 
   useEffect(() => {
-    // Only run on client side
-    if (typeof window === "undefined") return;
+    if (getIntroDone()) return;
 
-    // Check if already loaded (don't show on subsequent navigations)
-    if (sessionStorage.getItem("pageLoaded")) {
-      setIsVisible(false);
-      onComplete?.();
-      return;
-    }
+    // Keep the page underneath from scrolling or taking focus while the overlay is up
+    const root = document.documentElement;
+    const main = document.querySelector("main");
+    root.classList.add("intro-lock");
+    main?.setAttribute("inert", "");
+    const unlock = () => {
+      root.classList.remove("intro-lock");
+      main?.removeAttribute("inert");
+    };
 
     // Animate from 0 to 100 over 2.5 seconds with easing
     const duration = 2500;
-    const startTime = Date.now();
+    const startTime = performance.now();
+    let frameId = 0;
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+    let lastValue = -1;
 
-    const animate = () => {
-      const elapsed = Date.now() - startTime;
-      const normalizedProgress = Math.min(elapsed / duration, 1);
-      const easedProgress = easeOutCubic(normalizedProgress);
-      const progressValue = Math.floor(easedProgress * 100);
-      
-      setProgress(progressValue);
-      springProgress.set(easedProgress * 100);
+    const animate = (now: number) => {
+      const normalizedProgress = Math.min((now - startTime) / duration, 1);
+      const progressValue = Math.floor(easeOutCubic(normalizedProgress) * 100);
+
+      if (progressValue !== lastValue) {
+        lastValue = progressValue;
+        setProgress(progressValue);
+      }
 
       if (normalizedProgress < 1) {
-        requestAnimationFrame(animate);
+        frameId = requestAnimationFrame(animate);
       } else {
-        // Mark as loaded and hide after reaching 100
-        sessionStorage.setItem("pageLoaded", "true");
-        setTimeout(() => {
-          setIsVisible(false);
-          onComplete?.();
+        // Hold at 100 briefly, then fade out and reveal the page
+        timeoutId = setTimeout(() => {
+          unlock();
+          finishIntro();
         }, 400);
       }
     };
 
-    requestAnimationFrame(animate);
-  }, [onComplete, springProgress]);
+    frameId = requestAnimationFrame(animate);
 
-  if (!isVisible) return null;
+    return () => {
+      cancelAnimationFrame(frameId);
+      clearTimeout(timeoutId);
+      unlock();
+    };
+  }, []);
 
   return (
     <AnimatePresence>
-      {isVisible && (
+      {!isDone && (
         <motion.div
-          initial={{ opacity: 0 }}
+          initial={false}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.4 }}
-          className="fixed inset-0 z-[9999] bg-black flex items-center justify-center overflow-hidden"
+          className={`${INTRO_LOADER_CLASS} fixed inset-0 z-[9999] bg-black flex items-center justify-center overflow-hidden`}
         >
           {/* Animated background gradient */}
           <motion.div
@@ -117,12 +149,8 @@ export function LoadingAnimation({ onComplete }: LoadingAnimationProps) {
             />
 
             {/* Number */}
-            <motion.div
-              key={progress}
+            <div
               className="relative text-[#fa9906] text-[180px] sm:text-[240px] md:text-[300px] lg:text-[360px] font-mono font-bold tabular-nums tracking-tighter select-none"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.15, ease: "easeOut" }}
               style={{
                 fontVariantNumeric: "tabular-nums",
                 textShadow: "0 0 60px rgba(250, 153, 6, 0.9), 0 0 100px rgba(250, 153, 6, 0.6), 0 0 140px rgba(250, 153, 6, 0.3)",
@@ -130,7 +158,7 @@ export function LoadingAnimation({ onComplete }: LoadingAnimationProps) {
               }}
             >
               {String(progress).padStart(3, '0')}
-            </motion.div>
+            </div>
           </motion.div>
         </motion.div>
       )}
